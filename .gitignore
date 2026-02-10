@@ -1,0 +1,22 @@
+# Only include .tex files of .pdf files or .bib files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.run.xml
+*.xdv
+
+.DS_Store
+
+# Remove all reports that I submitted
+NikhilAnand*
