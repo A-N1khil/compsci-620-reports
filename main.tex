@@ -22,11 +22,12 @@
 \usepackage{multicol}
 \usepackage{colortbl,xcolor}
 \usepackage{cancel}
-\setcounter{secnumdepth}{4}
+\setcounter{secnumdepth}{3}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{definition}{Definition}[chapter]
-
+\newcommand{\reqchap}[1]{\chapter{[{\color{red} Required}] #1}}
+\newcommand{\skimchap}[1]{\chapter{[{\color{blue} Skim}] #1}}
 
 % Add commands to reuse them later
 \renewcommand\qedsymbol{QED}
@@ -52,8 +53,14 @@
 % This is an example input file.  Comparing it with
 % the output it generates can show you how to
 % produce a simple document of your own.
-\part{Reading Notes - Feb 9th}
-\chapter{Understanding Understanding Source Code with Functional Magnetic Resonance Imaging}
+\part{Reading Notes - February}
+\reqchap{Understanding Understanding Source Code with Functional Magnetic Resonance Imaging}
 \input{content/2_9_fmri}
+
+\reqchap{An fMRI study of code review and expertise}
+\input{content/2_11_floyd2017.tex}
+
+\skimchap{Why Is It Difficult for Programmers to Learn a New Programming Language}
+\input{content/2_11_nischal.tex}
 
 \end{document}               % End of document.
