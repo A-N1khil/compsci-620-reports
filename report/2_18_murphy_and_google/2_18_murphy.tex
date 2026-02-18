@@ -3,10 +3,10 @@
 % A '%' character causes TeX to ignore all remaining text on the line,
 % and is used for comments like this one.
 
-\documentclass[oneside]{book}      % Specifies the document class
+\documentclass{article}      % Specifies the document class
 
                              % The preamble begins here.
-\title{COMPSCI 620 Reading Notes}  % Declares the document's title.
+\title{What Predicts Software Developers' Productivity?}  % Declares the document's title.
 % Declares the author's name.
 \author{Nikhil Anand}
 % \date{}      % Deleting this command produces today's date.
@@ -23,12 +23,11 @@
 \usepackage{colortbl,xcolor}
 \usepackage{cancel}
 \setcounter{secnumdepth}{3}
-\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
-\newtheorem{definition}{Definition}[chapter]
-\newcommand{\reqchap}[1]{\chapter{[{\color{red} Required}] #1}}
-\newcommand{\skimchap}[1]{\chapter{[{\color{blue} Skim}] #1}}
+\newtheorem{definition}{Definition}[section]
 \usepackage{parskip}
+
 
 % Add commands to reuse them later
 \renewcommand\qedsymbol{QED}
@@ -49,22 +48,10 @@
 
 \maketitle                   % Produces the title.
 
-\tableofcontents
-
 % This is an example input file.  Comparing it with
 % the output it generates can show you how to
 % produce a simple document of your own.
-\part{Reading Notes - February}
-\reqchap{Understanding Understanding Source Code with Functional Magnetic Resonance Imaging}
-\input{content/2_9_fmri}
 
-\reqchap{An fMRI study of code review and expertise}
-\input{content/2_11_floyd2017.tex}
-
-\skimchap{Why Is It Difficult for Programmers to Learn a New Programming Language}
-\input{content/2_11_nischal.tex}
-
-\reqchap{What Predicts Software Developers' Productivity?}
-\input{content/2_18_murphy.tex}
+\input{../../content/2_18_murphy}
 
 \end{document}               % End of document.
