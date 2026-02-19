@@ -1,0 +1,195 @@
+This paper proposes a non-intrusive, logs-based method to identify when software engineers are engaged in focused work, which often includes instances of flow. Since traditional flow research relies heavily on self-reports (which are disruptive and retrospective), the authors aim to create an "always-on" behavioral metric using tool-generated logs (e.g., IDE usage, documentation views, code edits).
+
+They first conducted a diary study to understand how engineers experience flow. They found that flow is highly subjective, task-independent (not limited to coding), and often overlaps strongly with focused work. However, because flow depends on personal feelings about the task (e.g., satisfaction, progress), it cannot be reliably detected from logs alone. As a result, the authors shifted their goal from detecting pure flow to detecting focused work, treating flow as a subset of focus.
+
+To operationalize this, they developed a "focus time" metric based on task similarity. Using Word2Vec embeddings trained on millions of developer log sessions, they computed how semantically related an engineer’s actions were within sliding time windows. Periods with highly related actions (low behavioral "distance") were labeled as focus sessions.
+
+The metric was validated in two ways:
+\begin{enumerate}
+    \item Against a large-scale diary study, where engineers marked when they felt "in flow or focused." The model showed strong agreement (median $\text{PABAK} \approx 0.71$).
+    \item Against quarterly survey data from over 13,000 engineers, where frequency-based focus metrics significantly predicted self-reported flow/focus.
+\end{enumerate}
+The authors conclude that while their metric does not distinguish pure flow from focused work, it provides a scalable, passive, and validated behavioral measure that can support future research on flow, productivity, and workplace design.
+
+\section{Motivation}
+Flow is widely regarded as an "optimal experience" and has long been associated with satisfaction and productivity, especially in knowledge work like software engineering. However, most existing research measures flow through self-reports (e.g., surveys, experience sampling), which are inherently retrospective and disruptive. These methods can only capture flow after it happens and may even interfere with the experience itself.
+
+Attempts to measure flow non-intrusively (e.g., via physiological sensors, keystrokes, or partial log data) have had mixed success and often still require added hardware or interruptions. As a result, there is no reliable, scalable, and passive way to detect flow as it occurs in real-world work environments.
+
+The authors argue that instead of directly detecting flow—which is subjective and emotionally driven—it may be more feasible to detect focused work, since focus is a necessary precursor to flow. By leveraging rich logs data from engineering tools, they aim to build an "always-on," non-intrusive behavioral metric that identifies periods of focused work (which often include flow). This would enable large-scale, real-time measurement of focus and support future research on improving productivity and designing better work environments.
+
+\paragraph{Focus Time}
+\label{2:19:sec_focus_time}
+Focus time is defined as a behavioral, logs-based metric that represents periods during which an engineer is engaged in focused work, which may include—but does not explicitly distinguish - instances of flow. Rather than attempting to detect the subjective experience of flow directly, the authors conceptualize focus as a prerequisite to flow and operationalize it through patterns of related actions over time. Focus time is calculated by analyzing sequences of tool-generated log events (e.g., IDE edits, documentation views, code builds) within sliding time windows and measuring the semantic similarity of these actions using learned embeddings. Periods in which actions are highly related—indicating sustained engagement with a coherent task—are classified as focus sessions. The metric is task-agnostic, robust to minor interruptions, and independent of subjective value judgments about the work, making it a scalable and non-intrusive proxy for focused work and, by extension, potential flow states.
+\begin{quote}
+    Conceptually, the authors treat $\text{Flow} \subset \text{Focus}$, meaning flow is a subset of focused work.
+\end{quote}
+\subsection{Related Work}
+Flow and focused work have a long history of research, primarily in the field of psychology. With respect to unpacking and measuring f;ow and focused work in software engineers and other knowledge workers, Human Computer Interaction (HCI) research has been at the core of understanding how people achieve fow in computer based work.
+
+\paragraph{Flow and Focused Work}
+The concept of fow was first articulated by Csikszentmihalyi in the 1970s and since then has been studied by researchers across a variety of domains. To summarize, fow has been defined as an enjoyable experience engaging in a task that is appropriately challenging and motivating
+
+\paragraph{Flow and Focused Work in Engineering}
+There is an extensive literature on productivity in software engineering, which considers time spent in fow or focused work to be an important factor. Sanchez et al. leveraged Integrated Development Environment (IDE) logs to observe that engineers engage in a high level of activity switching and fragmentation over the course of their day, which had negative impacts on productivity.
+
+More recently, Chen et al. developed a measure of focus that leverages logs from a number of work tools (e.g., IDE, chat, internal wiki) by grouping together interactions that do not have interruptions (e.g., a chat message) and present descriptive statistics about how much time engineers spend in focus, as well as what factors impact this time.
+
+\section{Methodology}
+The study employed a multi-phase, mixed-methods research design to (1) understand how software engineers experience flow, (2) develop a logs-based behavioral metric of focused work (\textit{"focus time"} Paragraph \ref{2:19:sec_focus_time}), and (3) validate this metric against self-reported data collected at different time scales. The methodology integrates qualitative research, large-scale behavioral log analysis, machine learning, and statistical validation.
+\subsection{The Experiment}
+\subsubsection{Phase 1: Preliminary Diary Study (Understanding Flow in Context)}
+The authors recruited 18 software engineers across six countries at a large technology company. Participants had at least six months of tenure and had opted into research participation.
+
+Over five working days, participants completed end-of-day diary surveys. They reported:
+\begin{enumerate}
+    \item Whether they experienced flow,
+    \item When it occurred,
+    \item How long it lasted,
+    \item What activities they were performing,
+    \item Or why they did not experience flow.
+\end{enumerate}
+
+A total of 75 diary responses were collected. Logs data corresponding to reported time periods were analyzed alongside diary responses. Additionally, six participants took part in semi-structured follow-up interviews to verify alignment between their reported flow experiences and their observed logs data.
+
+\paragraph{Analysis}
+A thematic analysis (inductive coding) was conducted on diary responses and interview transcripts. This resulted in:
+\begin{itemize}
+    \item 3 themes describing how engineers experience flow,
+    \item 6 categories of tasks performed during flow,
+    \item 7 types of disruptions.
+\end{itemize}
+
+The qualitative phase revealed that \underline{flow is highly subjective}. Similar behavioral patterns could be labeled as "flow" or "not flow" depending on retrospective emotional evaluation. Flow often occurs during focused work but cannot be distinguished behaviorally without subjective input. This led to a methodological shift: instead of detecting pure flow, the authors focused on detecting focused work, which is behaviorally observable and a prerequisite to flow.
+
+\subsubsection{Phase 2: Logs-Based Metric Development (Focus Time)}
+In Phase 2, the authors developed a logs-based behavioral metric called focus time (\ref{2:19:sec_focus_time}) using large-scale internal activity data from software engineers. The data were drawn from a diverse suite of engineering tools used in day-to-day development work, including Integrated Development Environments (IDEs), code repositories, documentation systems, and communication tools. Each log entry represented a discrete event and contained structured metadata such as the tool name, the action type (e.g., edit, view, build), a timestamp marking when the action occurred, and an anonymized engineer identifier. Importantly, \underline{the dataset consisted only of behavioral events; user-generated content} (e.g., message text or code content) was excluded to preserve privacy. The training corpus included approximately 12 million activity sessions generated by about 59,000 engineers over a 30-day period, providing a large-scale behavioral foundation for modeling focus.
+
+To translate raw logs into a meaningful representation of focused work, the authors introduced the concept of \textit{task similarity}. They hypothesized that focused work is characterized by engagement in semantically related actions within a bounded time window. As a first step, they constructed sessions by grouping events by engineer and ordering them chronologically. Sessions were segmented based on a 10-minute inactivity threshold, meaning that if no events occurred for 10 minutes, a new session was started. Each session therefore represented a contiguous block of activity. These sessions were treated analogously to sentences in natural language processing, where each event was replaced by a representative label (e.g., "IDE edit," "View documentation"). In this way, sequences of developer actions were converted into structured sequences suitable for embedding-based modeling.
+
+Next, the authors trained a Word2Vec skip-gram model on these session sequences to learn distributed representations of developer activities. The model used 20-dimensional embeddings with a context window size of five, meaning that each event was trained to predict surrounding events within five positions. Events that occurred fewer than 200 times were excluded to ensure statistical robustness. Through this training process, events that frequently occurred in similar contexts were positioned close to one another in embedding space. For example, actions such as documentation viewing and internal code search clustered together because they often co-occur in related workflows. This learned embedding space allowed the researchers to quantify the semantic similarity between actions, forming the computational foundation for identifying periods of focused work.
+
+\paragraph{Focus Time Computation}
+Focus time was calculated in sliding windows across event sequences. For each window:
+\begin{enumerate}
+    \item Compute pairwise distances between all events in embedding space.
+    \item Weight distances by event duration.
+    \item Normalize distances between 0 and 1.
+\end{enumerate}
+The focus value $F(W)$ for a window $W$ is
+\begin{equation}
+    F(W) = \frac{\sum_{e,f \in W} (|e| + B)(|f| + B)\;\text{dist}(e,f)}{\sum_{e,f \in W} (|e| + B)(|f| + B)}
+\end{equation}
+where, $|e|$ is the duration of event $e$, $\text{dist}(e,f)$ is the distance between events $e$ and $f$ in embedding space (normalized between 0 and 1), and $B$ is a smoothing constant to prevent zero-duration events from dominating the metric. \textit{Lower focus values indicate more semantically related actions, which are indicative of focused work.}
+
+\subsubsection{Phase 3: Large-Scale Diary Validation}
+To evaluate whether the logs-derived focus time metric accurately reflected engineers’ lived experiences, the authors conducted a large-scale diary study. Fifty-one software engineers across seven countries participated, and forty-six of them recorded two full workdays, resulting in 97 diary days in total. Participants were asked to log every activity they performed during the day using a structured digital form. For each activity, they recorded what they did, when they did it, and critically, whether they felt “in flow or focused” during that activity. This design enabled fine-grained alignment between subjective experiences and behavioral logs.
+
+The validation was conducted using an agreement-based approach. The researchers compared time intervals marked as focused or in flow in the diary data against focus sessions identified by the logs-based metric. Agreement was quantified using Prevalence and Bias Adjusted Kappa (PABAK), which accounts for imbalance in classification. To optimize the metric, a grid search was performed across combinations of hyperparameters, including sliding window length and similarity threshold values. The optimal configuration achieved a median PABAK of 0.71, indicating strong agreement between the behavioral metric and self-reported focus. Importantly, the authors also tested naive behavioral proxies—such as long uninterrupted sessions or sessions with many events—and found that these showed substantially lower agreement, thereby justifying the embedding-based similarity approach.
+
+\subsubsection{Phase 4: Quarterly Survey Validation}
+In addition to short-term diary validation, the authors examined whether focus time aligned with longer-term perceptions of focus and flow using longitudinal survey data. The company administers a quarterly survey to software engineers, and the researchers analyzed responses from three consecutive quarters, encompassing 13,383 engineers. The relevant survey item asked participants how often they were able to reach a high level of focus or achieve flow during development tasks, using a five-point Likert scale.
+
+To compare behavioral and survey data, focus time metrics were aggregated at the quarterly level in several forms: total hours spent in focus, percentage of active time spent in focus, total number of focus sessions, and percentage of days containing at least one focus session. Linear regression models were then used to estimate the relationship between these aggregated focus measures and self-reported focus/flow. The models controlled for job-related variables such as role, tenure, level, and job code, as well as general activity levels (e.g., total logged sessions).
+
+The results showed that frequency-based measures—specifically the total number of focus sessions and the percentage of days with at least one focus session—were significant positive predictors of self-reported focus and flow. These relationships remained significant even after controlling for general activity levels, and inclusion of the focus metrics significantly improved model fit. In contrast, duration-based measures (total hours or percentage of time in focus) were not significant predictors. This multi-level validation demonstrated that the focus time metric not only aligns with moment-to-moment subjective reports but also corresponds with broader perceptions of focus over extended periods.
+
+\subsection{Limitations}
+\paragraph{1. Observational Design Limits Causal Inference}
+
+The study relies entirely on observational data, including logs-based behavioral records, diary entries, and longitudinal survey responses. Although regression models demonstrate statistically significant associations between focus time metrics and self-reported focus/flow, the authors do not claim that focus sessions cause flow experiences. The analyses establish correlation and predictive relationships but do not involve experimental manipulation. As a result, the findings cannot determine whether increased focus time leads to greater flow, whether flow leads to more coherent behavioral patterns, or whether both are driven by unmeasured third variables.
+
+\paragraph{2. Logs Data Do Not Capture Internal Psychological States}
+
+A central limitation acknowledged in the paper is that logs data reflect only observable behaviors and do not provide access to internal emotional or cognitive states. The preliminary diary study revealed that nearly identical behavioral patterns could be labeled as “flow” or “not flow” depending on how engineers felt about the outcome. This indicates that behavioral coherence alone does not determine flow. Consequently, even when focus time aligns with self-reported flow, the metric cannot causally explain why flow occurred, nor can it isolate the psychological mechanisms underlying the experience.
+
+\paragraph{3. Missing Contextual Variables May Confound Relationships}
+
+The authors note that the logs lack contextual information such as project identity and other environmental factors. For example, switching between unrelated projects may still appear behaviorally similar in the embedding space. Because such contextual details are not incorporated, the model may misclassify behavior, and unobserved contextual factors may influence both focus time and self-reported flow. This absence of contextual controls limits the ability to draw causal conclusions about how specific types of work or task structures influence focus or flow.
+
+\paragraph{4. Diary and Survey Self-Reports Are Subject to Bias}
+
+The validation of the focus time metric depends on self-reported diary and survey data, which are inherently retrospective and subjective. Engineers’ reports of flow may be influenced by recall bias, emotional evaluation of outcomes, or response tendencies. Since the behavioral metric is validated against these subjective measures, any biases in self-report could affect observed associations. Therefore, while agreement is demonstrated, the study cannot establish causal validity of the metric independent of self-report biases.
+
+
+\section{Key Findings}
+
+\paragraph{Flow Is Highly Subjective and Closely Linked to Focused Work}
+\uline{The preliminary diary study revealed that engineers do not experience flow consistently every day, and when they do, it typically occurs once per day and often in the morning}. Flow episodes varied in duration, commonly ranging from 5 minutes to 3 hours. However, the most important finding was that flow is strongly subjective and tied to retrospective emotional evaluation. Engineers often described nearly identical behavioral patterns as either “flow” or “not flow” depending on whether they felt positive about the outcome. In other words, the behavioral signature alone was insufficient to determine whether flow occurred.
+
+This finding led to a conceptual shift: while flow cannot be reliably detected from logs alone due to its emotional and experiential components, focused work can be behaviorally identified. The study therefore positioned focus as a measurable precursor to flow, with flow conceptualized as a subset of focused work.
+
+\paragraph{Flow Occurs Across Diverse Tasks and Is Not Limited to Coding}
+Another key insight from the qualitative phase was that engineers experience flow across a broad range of tasks, not only during coding. \uline{While coding was the most commonly reported flow activity, engineers also reported flow during documentation review, email management, planning, debugging, and other non-coding activities.}
+
+Additionally, \uline{flow was often maintained across multiple tools when those tools supported a unified task}. Engineers described moving between IDEs, documentation systems, chat, and version control without feeling fragmented, as long as the actions were related to the same goal. This supports the “working sphere” concept: related actions across different tools can constitute continuous focused engagement.
+
+\paragraph{Flow Can Withstand Small Interruptions}
+
+Contrary to traditional assumptions that interruptions necessarily break flow, the study found that engineers could maintain flow despite minor disruptions, such as brief chat messages. Flow was more likely to break when interruptions were unrelated or required significant context switching, such as meetings or major task changes.
+
+This finding directly informed the design of the focus time metric, which allows small interruptions within focus sessions rather than requiring uninterrupted blocks of activity.
+
+\paragraph{Logs-Based Focus Time Accurately Aligns with Diary Reports}
+
+In the large-scale diary validation phase, the focus time metric demonstrated strong agreement with self-reported “flow or focused” activities. The optimal model configuration achieved a median PABAK of 0.71, indicating substantial agreement. This level of agreement was comparable to previously validated observable behaviors such as time spent in meetings.
+
+Importantly, naive behavioral assumptions—such as defining focus as simply long sessions or sessions with many events—performed poorly. These naive benchmarks yielded significantly lower agreement values. This demonstrates that focus cannot be reduced to duration or activity volume alone; instead, semantic relatedness of actions is a critical signal.
+
+\paragraph{Frequency of Focus Sessions Predicts Self-Reported Flow Over Time}
+
+In the longitudinal quarterly survey validation, aggregated focus metrics were tested against self-reported frequency of achieving focus or flow. The key finding was that frequency-based focus metrics—specifically the number of focus sessions and the percentage of days with at least one focus session—were significant positive predictors of self-reported flow.
+
+These effects remained significant even after controlling for overall activity levels, indicating that simply working more does not explain perceived focus or flow. Moreover, including focus session metrics significantly improved model fit, strengthening the argument that the metric captures meaningful behavioral signals.
+
+Interestingly, duration-based metrics (total hours spent in focus or percentage of time in focus) were not significant predictors of survey responses. This aligns with the wording of the survey item (“How often…”) and with psychological literature suggesting that flow is associated with distorted time perception.
+
+\paragraph{Focus Time Represents a Valid, Scalable, and Non-Intrusive Behavioral Metric}
+Across validation phases, the study demonstrates that focus time is:
+\begin{itemize}
+    \item Behaviorally grounded,
+    \item Robust to minor interruptions,
+    \item Task-agnostic,
+    \item Strongly aligned with subjective reports of focus and flow,
+    \item More predictive than simple duration-based heuristics.
+\end{itemize}
+While it does not differentiate pure flow from focused work, it provides the first scalable, passive, logs-based behavioral metric that meaningfully aligns with self-reported experiences at both short and long timescales.
+
+\section{Implications and Future Work}
+\paragraph{Advancing Non-Intrusive Measurement of Flow and Focus}
+One of the central implications of this work is methodological. The study demonstrates that focused work can be measured passively and at scale using behavioral logs data, without requiring self-reports or physiological sensors. Traditional approaches to measuring flow—such as experience sampling, surveys, or wearable devices—are disruptive and retrospective. By contrast, the focus time metric operates continuously and unobtrusively.
+
+This shifts the paradigm from relying on subjective interruptions to using real-world behavioral traces. \textit{While the metric does not isolate “pure flow,” it establishes a validated behavioral foundation for detecting focused work, which is a necessary precursor to flow.}
+
+\paragraph{Reframing Flow as Behaviorally Overlapping with Focus}
+The research introduces a conceptual implication: rather than treating flow as an entirely distinct state, it suggests that flow behaviorally overlaps with focused work. The study proposes a nested relationship:
+\begin{center}
+    $\text{Flow} \subset \text{Focus}$
+\end{center}
+\textit{This reframing implies that behavioral signatures of flow may be detectable indirectly through patterns of task-related engagement.} It also suggests that flow research may benefit from first identifying sustained focus and then layering additional signals to detect emotional or experiential components.
+
+\paragraph{Enabling Intervention Design and Workplace Optimization}
+
+Because focus time is measurable at scale, organizations can now empirically investigate factors that increase or decrease focused work. The study’s qualitative findings already highlight potential facilitators of flow and focus, such as
+\begin{itemize}
+    \item Schedule management (e.g., minimizing fragmented meetings)
+    \item Goal setting
+    \item Dedicated uninterrupted time blocks
+\end{itemize}
+With a behavioral metric in place, organizations can experimentally test interventions like - (1) blocking “focus time” on calendars; (2) reducing meeting fragmentation; (3) encouraging structured goal-setting practices; and (4) modifying tool interfaces to reduce cognitive switching. The metric allows for quantitative evaluation of whether such interventions increase focus sessions over time.
+
+\paragraph{Distinguishing Frequency from Duration}
+An important implication of the statistical findings is that frequency of focus sessions predicts perceived flow, while duration does not. This suggests that the experience of flow may depend more on how often individuals reach a focused state rather than how long they remain in it. This has implications for productivity research. \textit{Instead of encouraging long uninterrupted work blocks alone, organizations may benefit from increasing the number of opportunities for focused engagement throughout the day.}
+
+\paragraph{Implications for Productivity Research}
+Existing literature links self-reported flow to productivity. With a logs-based focus metric, researchers can now investigate whether behavioral focus sessions predict - (1) self-reported productivity; (2) objective productivity measures such as code commits, issue resolution rates, or peer evaluations; and (3) other outcomes like job satisfaction or burnout. The metric provides a new tool for empirically testing the relationship between focus, flow, and productivity in real-world settings.
+
+\subsection{Future Work}
+\paragraph{Identifying Additional Signals to Disambiguate Flow from Focus}
+One important direction for future research is the development of additional signals to distinguish pure flow from focused work. The current focus time metric intentionally captures sustained engagement in related activities without attempting to differentiate between focus and the more nuanced psychological experience of flow. However, flow is traditionally characterized by additional components such as intrinsic enjoyment, challenge-skill balance, clear goals, and altered time perception. Future research could integrate complementary behavioral, contextual, or even lightweight physiological signals to capture these dimensions. For example, incorporating task difficulty indicators, goal-setting markers, or measures of challenge could help refine the metric and move closer to detecting flow itself rather than focus as a proxy.
+
+\paragraph{Investigating Drivers of Focus and Flow}
+A second promising avenue is investigating the factors that influence focus time and experimentally testing interventions aimed at increasing it. The qualitative findings in the study suggest that schedule management, goal clarity, and uninterrupted time blocks may facilitate flow and focused work. With a scalable behavioral metric now available, researchers can conduct controlled experiments to evaluate whether interventions—such as reducing meeting fragmentation, blocking dedicated focus time on calendars, or encouraging structured goal-setting—lead to measurable increases in focus sessions. This would allow organizations to move from intuition-based productivity strategies to evidence-based workplace design.
+
+\paragraph{Examining the Relationship Between Focus and Productivity}
+A third direction involves examining the relationship between focus time and productivity outcomes. Although prior literature links self-reported flow with productivity, it remains an open question whether logs-derived focus sessions predict objective performance measures. Future research could explore associations between focus time and indicators such as task completion rates, code quality, review efficiency, or reduced context switching. Establishing such links would not only validate the practical significance of the metric but also deepen our understanding of how sustained behavioral coherence translates into meaningful work outcomes.
