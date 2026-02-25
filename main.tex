@@ -29,8 +29,12 @@
 \newcommand{\reqchap}[1]{\chapter{\texorpdfstring{[{\color{red} Required}] #1}{#1}}}
 \newcommand{\skimchap}[1]{\chapter{\texorpdfstring{[{\color{blue} Skim}] #1}{#1}}}
 \usepackage{parskip}
-\usepackage[colorlinks=true, linkcolor=blue, linktoc=all]{hyperref}
-\usepackage{ulem}
+\usepackage[colorlinks=true, linkcolor=blue, linktoc=all, citecolor=red]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage[backend=biber,style=numeric,natbib=true,sorting=none,refsection=chapter]{biblatex}
+\input{bibsetup.tex}
+\usepackage{import}
+\usepackage{subcaption}
 
 % Add commands to reuse them later
 \renewcommand\qedsymbol{QED}
@@ -74,5 +78,15 @@
 
 \reqchap{Using Logs Data to Identify When Sofware Engineers Experience Flow or Focused Work}
 \input{content/2_19_req_flow.tex}
+
+\reqchap{Creativity, Generative AI, and Software Development: A Research Agenda}
+\input{content/2_25_req_creativity.tex}
+\printbibliography[heading=subbibliography,title={References}]
+
+\reqchap{Beliefs, Practices, and Personalities of Software Engineers: A Survey in a Large Software Company}
+\import{content/2_25_req_personalities}{2_25_req_personalities.tex}
+\printbibliography[heading=subbibliography,title={References}]
+
+\part{Reading Notes - March}
 
 \end{document}               % End of document.
