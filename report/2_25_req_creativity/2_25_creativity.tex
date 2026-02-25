@@ -6,7 +6,7 @@
 \documentclass{article}      % Specifies the document class
 
                              % The preamble begins here.
-\title{Using Logs Data to Identify When Sofware Engineers Experience Flow or Focused Work}  % Declares the document's title.
+\title{Creativity, Generative AI, and Software Development: A Research Agenda}  % Declares the document's title.
 % Declares the author's name.
 \author{Nikhil Anand}
 % \date{}      % Deleting this command produces today's date.
@@ -27,8 +27,11 @@
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{definition}{Definition}[section]
 \usepackage{parskip}
-\usepackage[colorlinks=true, linkcolor=blue, linktoc=all]{hyperref}
-\usepackage{ulem}
+\usepackage[colorlinks=true, linkcolor=blue, linktoc=all, citecolor=red]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage[backend=biber,style=numeric,natbib=true,sorting=none]{biblatex}
+\addbibresource{./refs.bib}
+\usepackage{xurl}
 
 
 \newcommand{\ip}[2]{(#1, #2)}
@@ -43,10 +46,16 @@
 
 \maketitle                   % Produces the title.
 
+\vspace{15pt}
+\begin{center}
+    \textit{Note: I have tried using references from the original paper in my report, something I haven't done in previous reports. Hence, this report is a bit more detailed than my previous ones.}
+\end{center}
+\vspace{15pt}
+
 % This is an example input file.  Comparing it with
 % the output it generates can show you how to
 % produce a simple document of your own.
 
-\input{../../content/2_19_req_flow}
-
+\input{../../content/2_25_req_creativity}
+\printbibliography
 \end{document}               % End of document.

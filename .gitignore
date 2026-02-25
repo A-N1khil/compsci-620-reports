@@ -15,6 +15,7 @@
 *.lot
 *.run.xml
 *.xdv
+*.bcf
 
 .DS_Store
 
