@@ -1,0 +1,248 @@
+This paper presents a research agenda examining how Generative AI (GenAI) may reshape creativity in software development . Using the 4P framework of creativity (Person, Product, Process, and Press/environment) alongside McLuhan's tetrad, the authors systematically explore how GenAI could enhance, obsolete, retrieve, or reverse aspects of creative work. They outline optimistic and pessimistic future scenarios, ranging from GenAI augmenting human creativity by freeing developers from mundane tasks to potentially diminishing human creative skills through overreliance. Based on 76 identified potential impacts, the paper proposes six interconnected research themes—individual capabilities, team capabilities, product outcomes, unintended consequences, societal impact, and human aspects—calling for longitudinal and interdisciplinary research to ensure GenAI amplifies positive creative effects while mitigating risks to developers, products, and society.
+
+\section{Motivation and Related Work}
+Creativity has long been recognized as a foundational element of software development, shaping both routine problem-solving and breakthrough innovation. As Glass argues, creativity differentiates ordinary software work from exceptional contributions \cite{glass1994software}. Everyday “Little-c” (Definition \ref{def:little_c_creativity}) creativity supports tasks such as debugging, refactoring, and feature implementation, while “Big-C” (Definition \ref{def:big_c_creativity}) creativity enables major architectural shifts and novel product visions. Creativity in organizational settings depends on the interaction of individual traits, domain expertise, and supportive environments, as articulated in established models of creativity \cite{amabile1988model}. Despite its importance, creativity in software engineering remains comparatively underexplored in empirical research \cite{amin2018snapshot}. The rapid integration of Generative AI (GenAI) into development workflows introduces a potentially transformative force, with early evidence suggesting that AI-powered tools can assist developers in idea generation and creative exploration \cite{bockeler2023genai}.
+
+Much of the existing discourse surrounding GenAI in software engineering has centered on productivity gains rather than creative transformation. Empirical studies on AI-powered pair programming and coding assistants have primarily measured efficiency and task completion improvements \cite{bird2023copilot, ziegler2024copilot}. At the same time, public discourse has emphasized the possibility that AI systems may automate a substantial proportion of coding tasks in the near future \cite{scheffler2023copilot80}. If GenAI increasingly “takes the rote out” of software development, creativity may emerge as the primary remaining human differentiator. In such a context, understanding how GenAI influences creative processes, outcomes, and professional roles becomes not only an academic concern but a strategic imperative for the discipline.
+
+Finally, the motivation for this work arises from a clear research gap: there is currently no systematic body of research directly examining the impact of GenAI on creativity in software development. While related studies address productivity, code generation, and quality, the creative dimension has not been analyzed in a structured manner. Given the disruptive trajectory of GenAI and its expanding integration into software engineering practice, it is both timely and necessary to articulate a forward-looking research agenda that rigorously investigates its short-, medium-, and long-term implications for human creativity.
+
+\subsection{Related Work}
+Creativity in software development has historically received limited direct empirical attention. A systematic review by Amin et al. highlights that creativity remains an underexplored area within software engineering research \cite{amin2018snapshot}. Existing studies have examined creativity at the individual level, including the influence of personality traits and knowledge behaviors on programmer creativity \cite{amin2020personality}, as well as the inhibitory effects of overly templated requirements on creative design processes \cite{mohanani2021templated}. At the product level, work on open-source ecosystems has explored innovation through novel reuse and community dynamics \cite{fang2024novelty}. Process-oriented research has investigated techniques that foster creative thinking, such as structured ideation in requirements engineering \cite{maiden2004provoking} and collaborative practices like whiteboarding and hybrid teamwork \cite{groeneveld2021exploring, jackson2022team}.
+
+Parallel to this, research on Large Language Models (LLMs) in software engineering has grown rapidly, primarily focusing on code generation, testing, and productivity outcomes rather than creativity itself \cite{fan2023llmsurvey, hou2024llmreview}. While these surveys acknowledge the transformative potential of GenAI tools, none explicitly center creativity as a primary construct. Consequently, there remains a clear gap in systematically examining how Generative AI may reshape creative processes, outcomes, and environments in software development.
+
+\section{Methodology}
+The paper adopts a structured, exploratory methodology to investigate the potential impact of Generative AI (GenAI) on creativity in software development. Rather than conducting empirical experiments, the authors employ a conceptual and analytical approach grounded in established theoretical frameworks. Specifically, they combine the 4P framework of creativity \cite{rhodes1961analysis} with McLuhan’s tetrad \cite{mcluhan1977laws} and elements of the Disruptive Research Playbook \cite{storey2024disruptive} to systematically identify and organize potential impacts.
+
+\paragraph{Phase 1: Scenario Development}
+The first phase involved constructing a spectrum of plausible future scenarios describing how GenAI may evolve within software development. The authors explicitly consider both “optimistic” and “pessimistic” futures. In the optimistic scenario, GenAI offloads “mundane work,” allowing developers more time for creative thinking. In contrast, the pessimistic scenario envisions GenAI performing “almost all the work,” potentially diminishing the human role in creative processes.
+
+These scenarios were not intended as predictions but as structured thought experiments to explore the breadth of possible outcomes. The authors emphasize that “any research agenda should include the possible spectrum of impact that may transpire,” ensuring coverage of both short-term and long-term consequences.
+
+\paragraph{Phase 2: Application of McLuhan’s Tetrad}
+In the second phase, the authors apply McLuhan’s tetrad \cite{mcluhan1977laws} as an analytical lens. The tetrad poses four guiding questions about any disruptive technology:
+\begin{itemize}
+    \item What does the technology enhance?
+    \item What does it make obsolete?
+    \item What does it retrieve from obsolescence?
+    \item What does it reverse into when pushed to extremes?
+\end{itemize}
+GenAI is selected as the disruptive technology under investigation, and creativity in software development is defined as the focal phenomenon. To structure the analysis, the tetrad is applied separately to each component of the 4P framework of creativity \cite{rhodes1961analysis}:
+\begin{enumerate}
+    \item Person (individual developer),
+    \item Product (creative outcomes),
+    \item Process (creative methods),
+    \item Press (environment).
+\end{enumerate}
+This resulted in four distinct tetrads, each populated through structured brainstorming among the researchers. The authors note that the tetrad “merely provides a framework for identifying future possibilities,” requiring imagination and collective reasoning rather than empirical measurement.
+
+\paragraph{Brainstorming and Impact Identification}
+Drawing on the developed scenarios and the tetrad structure, the research team collectively generated potential impacts for each 4P dimension. The process incorporated both everyday “Little-c” (Definition \ref{def:little_c_creativity}) creativity and “Big-C” (Definition \ref{def:big_c_creativity}) innovation, ensuring coverage of routine problem-solving and breakthrough advances. This structured brainstorming produced 76 potential impacts across the four tetrads. These impacts are treated as hypotheses or research opportunities rather than empirical findings. The methodology thus serves to systematically surface possibilities rather than validate them.
+
+\paragraph{Derivation of the Research Agenda}
+Finally, instead of converting each identified impact into an isolated research question, the authors synthesize them into six interconnected research themes:
+\begin{enumerate}
+    \item Individual capabilities
+    \item Team capabilities
+    \item The product
+    \item Unintended consequences
+    \item Societal impact
+    \item Human aspects
+\end{enumerate}
+
+This thematic abstraction aligns with Steps 3 and 4 of the Disruptive Research Playbook \cite{storey2024disruptive}, which recommend transforming disruptive insights into structured research programs. The methodology therefore transitions from exploratory scenario analysis to a coherent research agenda intended to guide future empirical and longitudinal studies.
+
+Overall, the methodology is conceptual, theory-driven, and forward-looking. It leverages established creativity and media theory frameworks to anticipate and structure inquiry into the evolving relationship between GenAI and creativity in software development.
+
+\section{Key Findings}
+\subsection{Analysis of the 4P Framework}
+\subsubsection{Person (Individual Creativity)}
+
+At the individual level, the paper suggests that Generative AI may significantly reshape how developers engage in creative work. GenAI can act as an ideation partner, expanding cognitive reach by generating alternatives, offering cross-domain insights, and reducing design fixation. This may lower the creative barrier to entry and democratize creative contribution across developers with varying levels of experience. However, the same mechanisms that amplify creativity may also weaken foundational cognitive skills such as deep reflection, independent reasoning, and complex problem-solving. The long-term concern is not whether individuals become more productive, but whether sustained reliance may gradually erode the very capacities that enable independent creative thinking.
+\begin{itemize}
+    \item \textbf{Enhances:}
+          \begin{itemize}
+              \item Idea generation and avoidance of design fixation
+              \item Cross-domain inspiration
+              \item Creative prompts and checks/balances
+              \item Assessment of alternative designs
+          \end{itemize}
+
+    \item \textbf{Obsolesces:}
+          \begin{itemize}
+              \item Dependence on personality traits traditionally linked to creativity
+              \item Deep reflective thinking
+              \item Traditional expertise accumulation
+              \item Mentorship as primary creative guidance
+          \end{itemize}
+
+    \item \textbf{Retrieves:}
+          \begin{itemize}
+              \item Manual sketching and doodling
+              \item Verification and evaluation skills
+              \item Greater emphasis on purely creative work
+          \end{itemize}
+
+    \item \textbf{Reverses Into:}
+          \begin{itemize}
+              \item Loss of second-guessing behavior
+              \item Reduced exploration of alternatives
+              \item Erosion of problem-solving skills
+          \end{itemize}
+\end{itemize}
+\subsubsection{Product (Creative Outcomes)}
+
+At the product level, GenAI may increase both the speed and scale of innovation. By synthesizing design patterns, analyzing user feedback, and generating novel feature combinations, it can accelerate continuous enhancement and enable highly personalized user experiences. This may expand the diversity of technical possibilities while reducing development friction. However, the paper highlights a paradox: while GenAI can generate novel outputs, widespread reliance may also lead to convergence, where products increasingly resemble one another due to shared model biases and training data. Furthermore, the risk of biased, overly complex, or even harmful features becoming embedded in products introduces new ethical and quality concerns.
+\begin{itemize}
+    \item \textbf{Enhances:}
+          \begin{itemize}
+              \item Continuous delivery of innovative features
+              \item Customized and adaptive user experiences
+              \item Identification of new product opportunities
+              \item Radical innovation possibilities
+          \end{itemize}
+
+    \item \textbf{Obsolesces:}
+          \begin{itemize}
+              \item Routine or generic solutions
+              \item Dependence on fixed frameworks
+              \item Traditional intermediate design artifacts
+              \item Specialty artifacts produced manually
+          \end{itemize}
+
+    \item \textbf{Retrieves:}
+          \begin{itemize}
+              \item Forgotten design patterns and styles
+              \item Legacy system design ideas
+              \item Analog design principles
+          \end{itemize}
+
+    \item \textbf{Reverses Into:}
+          \begin{itemize}
+              \item Homogeneous products
+              \item Echo chambers in design suggestions
+              \item Overly complex or impractical designs
+              \item Biased or harmful product features
+          \end{itemize}
+\end{itemize}
+
+\subsubsection{Process (Creative Methods)}
+GenAI has the potential to fundamentally transform creative processes within software development teams. By automating preparatory and routine tasks, it may free cognitive and temporal resources for experimentation and ideation. It can also serve as a moderator or facilitator in collaborative settings, potentially improving coordination across diverse teams. However, the automation of ideation and evaluation processes raises concerns about diminished human intuition, reduced constructive disagreement, and weakening of traditional creativity techniques. Over time, teams may become increasingly dependent on AI-generated direction, risking a decline in collective creative competence.
+\begin{itemize}
+    \item \textbf{Enhances:}
+          \begin{itemize}
+              \item Automation of mundane creative inputs
+              \item Rapid prototyping and iteration
+              \item Cross-disciplinary collaboration
+              \item AI-moderated brainstorming
+          \end{itemize}
+
+    \item \textbf{Obsolesces:}
+          \begin{itemize}
+              \item In-person brainstorming sessions
+              \item Strictly linear development processes
+              \item Traditional design techniques (e.g., focus groups)
+              \item Rigid specialization boundaries
+          \end{itemize}
+
+    \item \textbf{Retrieves:}
+          \begin{itemize}
+              \item Pair and mob programming
+              \item Structured idea-generation techniques
+              \item Human-centered design emphasis
+              \item Cross-domain study for inspiration
+          \end{itemize}
+
+    \item \textbf{Reverses Into:}
+          \begin{itemize}
+              \item Loss of intuitive decision-making
+              \item Erosion of creativity technique proficiency
+              \item Reduced constructive disagreement
+              \item Increased roteness of developer roles
+          \end{itemize}
+\end{itemize}
+\subsubsection{Press (Creative Environment)}
+The creative environment—encompassing organizational culture, physical space, and social interaction—may also be reshaped by GenAI integration. AI systems could enhance contextual awareness, optimize resource allocation, and improve distributed collaboration through intelligent environmental support. Creativity may become more explicitly recognized as a strategic differentiator within organizations. Nevertheless, excessive reliance may lead to diminished human interaction, isolation, weakened team identity, and reduced pride in creative contribution. In extreme cases, organizational trust may shift from human expertise to AI systems, altering professional agency and psychological safety.
+
+\begin{itemize}
+    \item \textbf{Enhances:}
+          \begin{itemize}
+              \item Contextual information support
+              \item Adaptive creative environments
+              \item Improved virtual collaboration
+              \item Greater organizational focus on creativity
+          \end{itemize}
+
+    \item \textbf{Obsolesces:}
+          \begin{itemize}
+              \item Traditional whiteboards and sticky notes
+              \item Fixed office layouts
+              \item Physical co-location requirements
+              \item Dependence on colleagues for creative support
+          \end{itemize}
+
+    \item \textbf{Retrieves:}
+          \begin{itemize}
+              \item Physical movement and embodied creativity
+              \item Supportive management recognition of creativity
+          \end{itemize}
+
+    \item \textbf{Reverses Into:}
+          \begin{itemize}
+              \item Social isolation
+              \item Reduced pride and agency
+              \item Management overreliance on AI
+              \item Devaluation of creativity as a distinct skill
+          \end{itemize}
+\end{itemize}
+
+\subsection{Other findings}
+\paragraph{Reframing the Discourse: From Productivity to Creativity}
+The paper establishes that the discourse surrounding GenAI in software engineering has been disproportionately centered on productivity, leaving creativity comparatively underexamined. While empirical and industry studies have emphasized efficiency gains, task completion speed, and code generation performance, the authors argue that creativity warrants equal—if not greater—attention. They position creativity not merely as a peripheral benefit of automation, but as a potential core differentiator in a future where routine technical tasks are increasingly delegated to AI systems. This reframing represents a significant conceptual contribution: it shifts the research lens from “how fast can we build?” to “what does human creative contribution become?”
+
+\paragraph{Identifying a Critical Research Gap in GenAI and Creativity}
+This paper highlights the existence of a substantial research gap. Despite growing literature on Large Language Models (LLMs) and AI-assisted development, no systematic body of research directly investigates the impact of GenAI on creativity in software development. The authors identify this absence as both surprising and concerning, especially given that creativity has historically been acknowledged as central to innovation in software practice. By explicitly identifying this gap, the paper justifies the need for a forward-looking research agenda and positions creativity as a primary research construct rather than a secondary outcome.
+
+\paragraph{A Multi-Level Perspective on Creative Transformation}
+The authors emphasize that the impact of GenAI must be examined across multiple units of analysis. Creativity is not confined to individuals; it emerges through interactions among individuals, teams, artifacts, and environments. The paper therefore argues for a multi-level perspective that includes individual capabilities, team dynamics, product outcomes, unintended consequences, societal implications, and human psychological aspects. This broader systems-oriented view expands the scope of inquiry beyond technical augmentation and toward socio-technical transformation.
+
+\paragraph{The Need for Longitudinal and Interdisciplinary Inquiry}
+Finally, the paper underscores the importance of longitudinal and interdisciplinary research. Many of the potential consequences—such as erosion of expertise, homogenization of products, shifts in professional identity, or societal revaluation of the software profession—may unfold gradually over time. The authors therefore advocate for proactive investigation rather than reactive correction. They stress that understanding both positive amplification and potential harms is essential to shaping responsible GenAI integration. In this sense, one of the paper’s key findings is normative: researchers and practitioners must intentionally guide the evolution of GenAI in software development, rather than allowing its trajectory to be defined solely by technological momentum.
+
+Collectively, these findings extend beyond the tetrad tables and establish the paper’s central message: GenAI is not merely a productivity tool but a transformative force with deep implications for creativity, professional identity, organizational practice, and society at large.
+
+\section{Implications}
+\paragraph{1. Creativity Must Become a Core Research Focus in Software Engineering}
+The paper explicitly argues that creativity deserves equal—if not greater—attention than productivity in the era of GenAI. A key implication is that future software engineering research should formally operationalize and measure creativity, rather than treating it as an indirect or secondary outcome. This reorientation shifts research priorities from efficiency metrics toward creative capability, innovation diversity, and long-term cognitive impact.
+
+\paragraph{2. Proactive Monitoring of Unintended Consequences}
+The authors emphasize the need to anticipate and measure unintended consequences, including erosion of expertise, over-reliance on AI, homogenized products, and bias amplification. The implication is that researchers should develop early assessment metrics and longitudinal benchmarks to detect negative shifts before they become systemic. Waiting for harm to manifest at scale would be insufficient.
+
+\paragraph{3. Multi-Level, Systems-Oriented Research Design}
+The work explicitly calls for research across six themes: individual capabilities, team capabilities, product outcomes, unintended consequences, societal impact, and human aspects. The implication is that studying GenAI purely at the tool level is inadequate. Instead, future research must adopt socio-technical and systems-level approaches that integrate psychological, organizational, and societal dimensions.
+
+\paragraph{4. Interdisciplinary Collaboration is Necessary}
+The paper clearly notes that understanding societal impact and human aspects requires expertise beyond software engineering. Psychologists, sociologists, economists, and policy scholars must be involved. The implication is that GenAI-creativity research cannot remain discipline-bound.
+
+\subsection{Extended Implications (Self Research)}
+\paragraph{5. Redefinition of Software Engineering Education}
+If GenAI automates large portions of implementation and routine ideation, curricula may need to shift toward - (1) Creative problem framing; (2) Critical evaluation of AI outputs; (3) Cross-domain synthesis; and (4) Ethical design thinking. The paper hints at skill shifts, but the educational restructuring implication is an extrapolation that follows logically from the identified changes in creative processes and outcomes.
+
+\paragraph{6. Emergence of “Creative Verification” as a Core Skill}
+While the paper discusses verification skills, a broader implication is that developers may transition from creators to curators and evaluators of AI-generated creativity. This suggests a new professional identity centered around oversight, refinement, and contextual judgment.
+
+\paragraph{7. Ethical Governance Frameworks for Creative AI Use}
+Given risks of bias, homogenization, and harmful product features, there may be a need for - (1) Governance standards for AI-assisted creative workflows; (2) Auditing frameworks for AI-generated design decisions; (3) Transparency requirements in AI-influenced products. This builds upon the paper’s societal and unintended consequence themes.
+
+\section{Appendix}
+\subsection*{Definitions}
+\begin{definition}[Little-c Creativity]
+    \label{def:little_c_creativity}
+    Everyday, domain-level creativity involving novel and useful problem solving within routine tasks (e.g., debugging, refactoring, feature design).
+\end{definition}
+
+\begin{definition}[Big-C Creativity]
+    \label{def:big_c_creativity}
+    Eminent, transformative creativity that produces groundbreaking innovations or paradigm shifts with broad and lasting impact.
+\end{definition}
