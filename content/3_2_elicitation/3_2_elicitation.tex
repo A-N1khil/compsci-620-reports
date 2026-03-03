@@ -1,0 +1,270 @@
+The paper presents a comprehensive review of the state of the art and practice in requirements elicitation within software engineering . It conceptualizes elicitation not as a passive gathering activity but as a dynamic process of discovery, emergence, and invention of requirements. The authors emphasize that elicitation is inherently complex, communication-intensive, and multidisciplinary, drawing heavily from social sciences, organizational theory, and practical experience. They outline the fundamental activities involved in elicitation—such as understanding the domain, identifying sources, analyzing stakeholders, selecting appropriate techniques, and conducting the elicitation itself—and discuss the diverse roles played by the requirements engineer, including facilitator, mediator, and documenter. The chapter also highlights how contextual factors such as project type, organizational maturity, stakeholder distribution, and constraints significantly influence how elicitation is conducted.
+
+The survey systematically reviews a wide range of elicitation techniques and approaches, including interviews, questionnaires, task and domain analysis, ethnography, group work, prototyping, goal-based methods, scenarios, and viewpoints. It compares these techniques in terms of their suitability for different elicitation activities and their complementary or alternative use. The chapter further discusses methodology-based approaches (e.g., structured analysis, object-oriented modeling, Agile methods), available tool support, and persistent issues such as communication barriers, stakeholder conflicts, volatility, and gaps between research and practice. Concluding with trends, challenges, and future research directions, the authors argue that despite advances in tools and formal methods, requirements elicitation remains as much an art as a science, requiring skill, adaptability, and contextual judgment.
+
+\section{Introduction}
+\subsection{The Importance of Requirements Elicitation}
+
+Requirements engineering (RE) has long been recognized as a critical component of successful software development. Among its various phases, requirements elicitation represents an early yet continuous and foundational activity. It is during this phase that the needs, expectations, and constraints of stakeholders are uncovered and articulated. Importantly, requirements are not merely “gathered” or “captured”; rather, they are elicited—a term that reflects the discovery, emergence, and even invention of requirements through interaction and analysis. This distinction emphasizes that requirements do not always pre-exist in explicit form but must often be surfaced through structured engagement with stakeholders and examination of the problem domain.
+
+The importance of getting the requirements right cannot be overstated. Poorly elicited requirements are a major contributor to project failure, cost overruns, and system inadequacies. Field studies have identified effective requirements practices—particularly strong elicitation practices—as key success factors in software projects \cite{Hofmann2001}. Despite this recognition, elicitation remains one of the most difficult and error-prone activities in software engineering.
+
+\subsection{The Complexity and Multidisciplinary Nature of Elicitation}
+
+Requirements elicitation is inherently complex due to its communication-intensive and multidisciplinary nature. Requirements are typically distributed across multiple sources: stakeholders, problem owners, existing documentation, legacy systems, organizational procedures, and domain knowledge. Because of this diversity, elicitation extends beyond traditional software engineering and draws heavily from disciplines such as social sciences, organizational theory, knowledge engineering, and group dynamics \cite{Goguen1993}.
+
+Communication challenges further compound this complexity. Stakeholders and analysts often belong to different “communities of practice,” resulting in semantic gaps and misunderstandings. Concepts that are clear within one group may be opaque to another, and these differences frequently go unnoticed unless deliberately addressed. Consequently, elicitation is not simply a technical exercise but a socially embedded process that requires strong interpersonal, negotiation, and facilitation skills.
+
+Moreover, the type of system under development significantly influences how elicitation is conducted. A custom embedded control system demands a different elicitation strategy compared to a commercial off-the-shelf inventory management system. Factors such as project scale, organizational maturity, stakeholder distribution, regulatory constraints, time and budget limitations, and safety criticality all shape the selection of techniques and the structure of the elicitation process. Thus, elicitation is deeply contextual and cannot be reduced to a one-size-fits-all procedure.
+
+\subsection{Communication Barriers and Organizational Context}
+
+One of the central challenges in elicitation is the existence of communication barriers between stakeholders and development teams. Differences in terminology, expectations, assumptions, and priorities often lead to incomplete or conflicting requirements. Organizational and political contexts also influence the elicitation process, affecting stakeholder participation, commitment, and openness. Because elicitation is iterative and negotiation-driven, it demands sustained cooperation among diverse stakeholder groups.
+
+Additionally, elicitation is rarely performed in isolation. It interacts with other RE activities such as prioritization and negotiation, particularly in market-driven environments where requirements influx can be substantial and continuous \cite{Robertson1999}. The dynamic and evolving nature of stakeholder understanding means that requirements often change as elicitation progresses, reinforcing the iterative character of the process.
+
+\subsection{Objectives and Structure of the Chapter}
+
+Given the interdisciplinary breadth and practical importance of requirements elicitation, the chapter aims to present a comprehensive survey of the techniques, approaches, and tools used in this domain. The authors seek not only to catalogue available methods but also to analyze their strengths and weaknesses, examine contextual applicability, and highlight current issues, trends, and challenges faced by both researchers and practitioners.
+
+The chapter is structured to first define and contextualize requirements elicitation, then survey widely used techniques and approaches, compare their applicability, explore methodology - based and tool - supported elicitation, and finally discuss persistent issues, emerging trends, and future research directions. In doing so, it positions requirements elicitation as both a critical engineering activity and a socially embedded, skill-intensive practice that continues to evolve.
+
+\section{What is Requirements Elicitation}
+Requirements Engineering (RE) is the discipline concerned with identifying, analyzing, documenting, validating, and managing the requirements of a software system. It seeks to ensure that a system fulfills stakeholder needs and achieves its intended objectives within given constraints. RE encompasses multiple interrelated activities such as elicitation, analysis, specification, validation, negotiation, and management.
+
+At its core, requirements elicitation within RE is about learning and understanding stakeholder needs rather than merely recording stated wishes. Robertson and Robertson describe this process metaphorically as “trawling for requirements,” emphasizing that stakeholders often reveal more requirements than initially expected \cite{Robertson1999}. This highlights the exploratory nature of elicitation: it is not simply a passive collection process but an active discovery process. In some contexts, elicitation even involves creativity—requirements may be invented or refined as stakeholders reflect on new possibilities and constraints.
+
+Moreover, elicitation is deeply influenced by communication dynamics. Differences in terminology, background knowledge, and expectations between analysts and stakeholders can create semantic gaps. Taylor-Cummings identifies the persistent "user-IS gap" that often complicates meaningful dialogue between problem owners and solution developers \cite{TaylorCummings1998}. Thus, requirements elicitation must be understood not only as a technical activity but also as a socio-organizational process grounded in communication, negotiation, and mutual understanding.
+
+\subsection{The Process of Requirements Elicitation}
+
+The requirements elicitation process consists of multiple interrelated activities. Although the sequence and emphasis vary by project context, the following core activities are generally involved:
+
+\begin{enumerate}
+    \item \textbf{Understanding the application domain}: Investigating the real-world environment in which the system will operate, including organizational, social, political, and technical constraints. Analysts must understand existing processes, goals, and problems before proposing system solutions \cite{Jackson1995}.
+    \item \textbf{Identifying sources of requirements}: Determining where requirements reside, such as stakeholders (users, customers, sponsors), existing systems, business processes, documentation, regulations, and legacy artifacts \cite{Loucopoulos1995}.
+
+    \item \textbf{Analyzing stakeholders}: Identifying all individuals and groups affected by the system and understanding their interests, priorities, and influence. This includes selecting key representatives and recognizing potential conflicts among stakeholder groups \cite{Alexander2002}.
+
+    \item \textbf{Selecting techniques and approaches}: Choosing appropriate elicitation techniques (e.g., interviews, workshops, observation, prototyping) based on project characteristics. Research shows that technique selection is often influenced by analyst familiarity, methodology constraints, or contextual judgment \cite{Hickey2003}.
+
+    \item \textbf{Eliciting and refining requirements}: Engaging stakeholders using selected techniques to uncover functional and non-functional requirements, clarify scope, identify constraints, and iteratively refine understanding.
+\end{enumerate}
+
+This process is inherently iterative and incremental. It typically begins with an informal mission statement and evolves through successive refinement. Time, cost, organizational maturity, and volatility significantly influence how thoroughly each activity is performed. As noted in practice-oriented guidance literature, elicitation rarely concludes with perfect completeness; instead, it is often bounded by project constraints \cite{Sommerville1997}.
+
+\subsection{Roles of the Requirements Engineer During Elicitation}
+
+The requirements engineer (also referred to as systems analyst or business analyst) plays multiple dynamic roles during elicitation. These roles extend beyond technical modeling and require strong interpersonal and organizational skills.
+
+\paragraph{Facilitator} The analyst acts as a facilitator. During interviews and workshops, they guide discussions, ask probing questions, clarify ambiguities, and ensure that all participants contribute effectively. Effective facilitation requires structured questioning techniques and domain exploration skills \cite{Goguen1993}.
+
+\paragraph{Mediator} The analyst often serves as a mediator and negotiator. Conflicts between stakeholders - particularly regarding priorities, constraints, and competing interests—are common. Negotiation and prioritization therefore become central aspects of the elicitation phase \cite{Davis1994}. The analyst must balance technical feasibility with business value while managing political and organizational sensitivities.
+
+\paragraph{Documenter} The analyst acts as a documenter and translator. Requirements elicited from stakeholders must be represented clearly and consistently for development teams. This documentation frequently forms the basis for contractual agreements and downstream design decisions. The analyst translates informal, sometimes ambiguous stakeholder statements into structured and verifiable specifications.
+
+Finally, the requirements engineer must often assume the perspectives of other future stakeholders—such as architects, designers, testers, and maintainers—who may not yet be formally involved. This anticipatory role ensures that elicited requirements are realistic, consistent, and aligned with broader system objectives.
+
+Taken together, these roles illustrate that requirements elicitation is as much a human-centered discipline as it is a technical one. The effectiveness of the process depends heavily on the analyst's ability to integrate communication, negotiation, documentation, and contextual awareness into a coherent and adaptive practice.
+
+\section{Techniques and Approaches for RE}
+
+\textit{The paper provides a comprehensive survey of techniques and approaches for requirements elicitation. The following section summarizes the key parts of those techniques and approaches.}
+
+\paragraph{Interviews}
+
+Interviews are one of the most traditional elicitation techniques and may be structured, semi-structured, or unstructured. They allow analysts to gather detailed information directly from stakeholders, with effectiveness largely depending on interviewer skill and preparation. Structured interviews rely on predefined questions, while unstructured interviews support exploratory dialogue \cite{Agarwal1990,Holtzblatt1995}.
+
+\paragraph{Questionnaires}
+
+Questionnaires are typically used in early elicitation stages to collect information from a large number of stakeholders efficiently. They may contain open or closed questions but are limited in depth and lack opportunities for clarification. They are most effective when the domain is already well understood \cite{Foddy1994}.
+
+\paragraph{Task Analysis}
+
+Task analysis decomposes high-level user tasks into subtasks to understand workflows, user-system interaction, and required knowledge. It is especially useful for usability-oriented requirements and process modeling but can be effort-intensive depending on required granularity \cite{Carlshamre1996,Richardson1998}.
+
+\paragraph{Domain Analysis}
+
+Domain analysis involves studying existing systems, documentation, and related applications to understand reusable concepts and domain constraints. It is particularly important when replacing or enhancing legacy systems and supports the reuse of specifications and domain knowledge \cite{Sutcliffe1998,Jackson2000}.
+
+\paragraph{Introspection}
+
+Introspection involves the analyst deriving requirements based on their own domain knowledge and assumptions. It is generally used as a starting point or when stakeholders have limited ability to articulate needs, though it risks bias and incompleteness \cite{Goguen1993}.
+
+\paragraph{Repertory Grids}
+
+Repertory grids model domain entities and their attributes in matrix form to identify similarities and distinctions. This structured abstraction technique is typically used with domain experts and supports conceptual modeling but is limited in representing detailed system behaviors \cite{Kelly1955}.
+
+\paragraph{Card Sorting}
+
+Card sorting asks stakeholders to group domain concepts into categories based on their understanding. It helps reveal conceptual structures and relationships but operates at a relatively high level of abstraction \cite{Beck1989}.
+
+\paragraph{Laddering}
+
+Laddering uses iterative “why” and “how” probing questions to organize stakeholder knowledge hierarchically. It supports structured reasoning and requirement clarification but assumes that knowledge can be expressed in hierarchical form \cite{Hinkle1965}.
+
+\paragraph{Group Work}
+
+Group sessions facilitate collaborative requirement discovery among multiple stakeholders. They promote shared understanding and negotiation but require strong facilitation to manage conflicts and dominant personalities \cite{Gottesdiener2002}.
+
+\paragraph{Brainstorming}
+
+Brainstorming encourages rapid generation of ideas without immediate critique. It is effective for exploring innovative requirements and developing initial project scope but is not intended for detailed specification or decision-making \cite{Osborn1979}.
+
+\paragraph{Joint Application Development (JAD)}
+
+JAD involves structured workshops with stakeholders and facilitators to rapidly define requirements and resolve issues. It differs from brainstorming by following defined steps and focusing on business objectives \cite{Wood1995}.
+
+\paragraph{Requirements Workshops}
+
+Requirements workshops are structured collaborative sessions aimed at refining and discovering requirements. Variants include cross-functional workshops, CRC-based sessions, and creativity-driven meetings \cite{Gottesdiener2002,Macaulay1993}.
+
+\paragraph{Ethnography}
+
+Ethnography studies stakeholders in their natural work environments to understand contextual, social, and collaborative aspects of system use. It is particularly effective for uncovering implicit requirements and usability concerns \cite{Ball2000,Sommerville2001}.
+
+\paragraph{Observation}
+
+Observation involves directly watching users perform tasks without interference. It provides insight into actual work practices but may alter user behavior due to awareness of being observed \cite{Sommerville2001}.
+
+\paragraph{Protocol Analysis}
+
+Protocol analysis requires stakeholders to verbalize their thought processes while performing tasks. It reveals cognitive reasoning behind actions but may omit habitual steps that users consider trivial \cite{Nielsen2002}.
+
+\paragraph{Apprenticing}
+
+Apprenticing requires the analyst to learn and perform stakeholder tasks under supervision. This immersive approach improves domain understanding and uncovers tacit knowledge \cite{Beyer1995}.
+
+\paragraph{Prototyping}
+
+Prototyping presents early system models to stakeholders for feedback and refinement. It is particularly useful for interface design and innovative systems but may create premature attachment to incomplete designs \cite{Sommerville2001}.
+
+\paragraph{Goal-Based Approaches}
+
+Goal-oriented approaches decompose high-level system objectives into refined sub-goals that eventually translate into requirements. Frameworks such as KAOS and i* formalize this reasoning, though incorrect early goals can propagate errors \cite{Dardenne1993,Yu1997}.
+
+\paragraph{Scenarios}
+
+Scenarios describe concrete narratives of system use, including interactions and exceptions. They support validation and incremental refinement and are often used in structured scenario-based methods \cite{Potts1994,Rolland1998}.
+
+\paragraph{Viewpoints}
+
+Viewpoint approaches model requirements from multiple stakeholder or system perspectives to improve completeness and consistency. They are useful in complex systems but can be resource-intensive \cite{Sommerville1998,Nuseibeh1996}.
+
+\section{Comparison of Techniques and Approaches}
+\begin{table}
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|}
+        \cline{2-9}
+                                                                  & \rotatebox{90}{Interviews} & \rotatebox{90}{Domain} & \rotatebox{90}{Groupwork} & \rotatebox{90}{Ethnography} & \rotatebox{90}{Prototyping} & \rotatebox{90}{Goals} & \rotatebox{90}{Scenarios} & \rotatebox{90}{Viewpoints} \\ \hline
+        \multicolumn{1}{|c|}{Understanding the domain}            & X                          & X                      & X                         & X                           &                             & X                     & X                         & X                          \\ \hline
+        \multicolumn{1}{|c|}{Identifying sources of requirements} & X                          & X                      & X                         &                             &                             & X                     & X                         & X                          \\ \hline
+        \multicolumn{1}{|c|}{Analyzing the stakeholders}          & X                          & X                      & X                         & X                           & X                           & X                     & X                         & X                          \\ \hline
+        \multicolumn{1}{|c|}{Selecting techniques}                & X                          & X                      & X                         &                             &                             &                       &                           &                            \\ \hline
+        \multicolumn{1}{|c|}{Eliciting the requirements}          & X                          & X                      & X                         & X                           & X                           & X                     & X                         & X                          \\ \hline
+    \end{tabular}
+    \caption{Key Features of Techniques}
+    \label{tab:req:key_features}
+\end{table}
+
+\subsection{Selecting Techniques for Specific Elicitation Activities}
+
+A fundamental concern in requirements elicitation is determining which techniques are most appropriate for particular elicitation activities. There is no universally optimal method; technique selection is inherently context-dependent and shaped by project characteristics, stakeholder dynamics, and system complexity. Research in requirements engineering emphasizes that elicitation approaches must be adapted to the nature of the problem and environment rather than applied uniformly across projects \cite{Nuseibeh2000}. Consequently, analysts must align techniques with specific goals such as domain understanding, stakeholder analysis, or detailed requirement discovery.
+
+Generic and flexible techniques such as interviews, domain analysis, and group work are suitable across multiple elicitation activities (Table \ref{tab:req:key_features}). Interviews facilitate direct knowledge extraction from stakeholders, domain analysis grounds requirements in contextual understanding, and group sessions promote negotiation and shared interpretation \cite{Gottesdiener2002,Sutcliffe1998}. These approaches are versatile because they address both informational and communicative aspects of elicitation.
+
+More structured approaches - such as goal-based, scenario-based, and viewpoint-oriented techniques - offer systematic support for modeling and refinement. Goal-oriented methods connect detailed requirements to higher-level system objectives and help ensure alignment with business intent \cite{Dardenne1993}. Scenario-based techniques support incremental refinement and validation by describing realistic interactions \cite{Potts1994}. Viewpoint approaches strengthen completeness by capturing diverse stakeholder perspectives and organizing requirements accordingly \cite{Sommerville1998}. Thus, technique suitability varies according to the type of knowledge being elicited and the stage of the process.
+
+\subsubsection{Complementary Use of Techniques}
+
+The comparison further emphasizes that elicitation is most effective when techniques are used in combination. Complementary techniques compensate for one another's weaknesses and provide richer insights than isolated application. For instance, combining ethnographic observation with prototyping allows analysts to observe real-world behavior while gathering structured feedback on proposed solutions \cite{Sommerville2001}. Similarly, goal modeling can be strengthened by integrating scenario analysis to validate goal decomposition through concrete use cases \cite{Rolland1998}.
+
+Interviews often complement domain studies by clarifying findings derived from documentation analysis. Likewise, individual interviews may precede collaborative workshops to reconcile divergent stakeholder priorities \cite{Gottesdiener2002}. The paper stresses that such combinations increase coverage across contextual, social, and technical dimensions of requirements. Rather than relying on a dominant technique, effective elicitation involves strategic orchestration of multiple methods.
+
+\subsubsection{Alternative Techniques and Flexibility}
+
+In addition to complementarity, some techniques may serve as alternatives when constraints prevent the use of preferred methods. Environmental limitations, political sensitivity, resource constraints, or stakeholder availability may necessitate substituting one approach for another. For example, when ethnographic observation is impractical, scenario-based methods may approximate contextual understanding \cite{Potts1994}. If large-scale workshops are infeasible, structured interviews may serve as substitutes.
+
+However, alternative techniques rarely yield identical outcomes. Each method introduces different forms of abstraction, bias, and depth of analysis. Substitution may therefore affect the type and granularity of requirements elicited. Empirical studies indicate that analysts often select techniques based on familiarity or intuition rather than systematic reasoning \cite{Hickey2003}. This reinforces the importance of informed and reflective technique selection.
+
+\subsubsection{Implications for Practice}
+
+The comparative discussion ultimately demonstrates that requirements elicitation is not the execution of a predefined recipe but the management of trade-offs between techniques. Analysts must evaluate project context, stakeholder diversity, system complexity, and resource constraints when selecting methods. The literature consistently highlights that structured guidance for technique selection remains limited, and greater empirical grounding is needed to support systematic decision-making \cite{Nuseibeh2000}.
+
+In summary, the comparison underscores three central insights:
+\begin{enumerate}
+    \item Technique suitability depends on elicitation activity and context.
+    \item Complementary combinations enhance requirement quality.
+    \item Alternative techniques provide flexibility but may alter outcomes.
+\end{enumerate}
+
+\subsection{Methodology-Based Requirements Elicitation}
+
+\paragraph{Structured Analysis and Design (SAD)}
+Structured Analysis and Design (SAD) is a function-oriented methodology that supports elicitation through formal modeling techniques such as Data Flow Diagrams (DFDs), Entity-Relationship Diagrams (ERDs), Data Dictionaries, and Event Lists \cite{DeMarco1979,Yourdon1989}. These artifacts help structure stakeholder discussions and clarify system boundaries, data flows, and functional decomposition during early requirements analysis.
+
+\paragraph{Object-Oriented Approaches and UML}
+
+Object-oriented approaches, particularly UML, provide standardized modeling techniques such as Use Case diagrams and Class diagrams to support requirements elicitation \cite{Cockburn2001}. Use Cases are especially influential, offering structured representations of system functionality from an actor's perspective. These models facilitate stakeholder validation while maintaining analytical structure.
+
+\paragraph{Integrated and Exploratory Methodologies}
+
+Some methodologies advocate combining techniques within a structured roadmap. For example, ethnographic study may precede structured interviews to ground elicitation in real-world context \cite{Goguen1993}. Soft Systems Methodology (SSM) extends this by focusing on organizational understanding and stakeholder worldviews before formalizing requirements \cite{Checkland1990}. These approaches emphasize contextual and socio-technical complexity.
+
+\paragraph{Customer-Oriented and Quality-Driven Methods}
+
+Quality Function Deployment (QFD) translates customer needs into technical specifications using structured matrices, ensuring traceability between stakeholder expectations and design decisions \cite{Akao1995}. Similarly, Gause and Weinberg emphasize exploratory questioning techniques to uncover implicit assumptions and hidden constraints \cite{Gause1989}. Both approaches strengthen analytical rigor in elicitation.
+
+\paragraph{Agile Approaches}
+
+Agile methods redefine elicitation as an ongoing, iterative process integrated with development \cite{Martin2003}. Lightweight artifacts such as User Stories and continuously refined Product Backlogs support incremental discovery rather than heavy upfront specification.
+
+\section{Tool Support for Requirements Elicitation}
+Tool support for requirements elicitation ranges from lightweight templates to sophisticated modeling and collaboration systems. Basic tools such as standardized specification templates (e.g., IEEE Std 830 and Volere) provide structural guidance for documenting elicited requirements, while requirements management systems such as DOORS support organization and traceability \cite{IEEE1998,Robertson1999}. More specialized tools have been developed to assist particular elicitation approaches, including goal-modeling environments and scenario-based systems, though adoption in industry has been limited \cite{Reubenstein1991,Goldin1994}. Additionally, groupware and collaborative platforms facilitate distributed stakeholder engagement, supporting activities such as brainstorming, negotiation, and shared modeling \cite{Herlea1998}. Despite these advances, tool support remains uneven, with many elicitation activities still heavily dependent on analyst expertise and manual facilitation rather than automation.
+
+\section{Issues and Pitfalls}
+
+\paragraph{Process and Project-Related Issues}
+
+Requirements elicitation is highly context-sensitive. Each project differs in scope, domain complexity, stakeholder distribution, and organizational maturity, making standardized processes difficult to apply uniformly. A common problem is poorly defined project scope at the outset, which leads to assumptions, misunderstandings, and requirement creep. External influences such as organizational change, economic pressures, or regulatory constraints further complicate the process. Because elicitation is iterative and socially driven, maintaining clarity of scope and alignment with business goals is an ongoing challenge.
+
+\paragraph{Communication and Understanding Problems}
+
+Communication breakdowns are among the most significant obstacles in elicitation. Stakeholders often struggle to articulate their needs clearly, especially when they lack technical vocabulary or awareness of possible system capabilities. Analysts, in turn, may misunderstand domain-specific language or implicit assumptions. Stakeholders may describe solutions rather than underlying problems, limiting exploration of alternatives. Additionally, routine practices are frequently overlooked because they are considered obvious, even though they may not be apparent to others. These communication gaps contribute directly to incomplete, ambiguous, or inconsistent requirements.
+
+\paragraph{Quality of Requirements}
+
+Elicited requirements frequently suffer from vagueness, inconsistency, infeasibility, or uneven levels of detail. The informal nature of many elicitation activities increases the risk of ambiguity and omission. Requirements are also prone to volatility: as stakeholders gain better understanding of the system and its implications, their expectations evolve. This continuous change can destabilize the specification and complicate validation. Moreover, the lack of clear metrics for assessing elicitation effectiveness makes it difficult to determine whether requirements are sufficiently complete and correct.
+
+\paragraph{Stakeholder-Related Challenges}
+
+Conflicts between stakeholders are common, particularly when priorities and trade-offs must be negotiated. Some stakeholders may be unwilling to compromise, unclear about their own needs, or resistant to changes introduced by a new system. Differences in authority, influence, and organizational interests can distort elicitation outcomes. Shifting stakeholder opinions and competing agendas further increase the difficulty of achieving stable and agreed-upon requirements.
+
+\paragraph{Analyst-Related Limitations}
+
+The success of elicitation depends heavily on analyst expertise. Analysts may lack sufficient domain knowledge, methodological training, or interpersonal skills such as facilitation and negotiation. Many rely on familiar techniques rather than systematically selecting methods appropriate to the context. A premature focus on solutions instead of problem exploration can also bias the elicitation process. Without structured guidance and experience, analysts may repeat common mistakes.
+
+\paragraph{Research Gaps}
+
+From a research perspective, the paper notes a significant gap between theory and practice. Although numerous elicitation techniques have been proposed, many lack strong empirical validation or practical usability. There is limited availability of comprehensive process guidelines and integrated tool support, particularly for technique selection and contextual adaptation. The literature also lacks standardized metrics to measure elicitation performance and effectiveness. Without empirical case studies and industry reports, it remains difficult to evaluate the true impact of proposed methods.
+
+\paragraph{Practice-Oriented Issues}
+
+Despite extensive research on elicitation techniques, gaps remain between theory and practice. Many proposed methods lack strong empirical validation or practical adoption. Tool support and structured guidance for technique selection are often limited. In practice, organizations may not allocate adequate time and resources to elicitation, and customers may underestimate its importance. Differences between expert and novice analysts further contribute to variability in outcomes. As a result, recurring elicitation problems persist across projects.
+
+\section{Trends and Challenges in RE Research and Practice}
+\subsection{Trends in Research}
+
+Research in requirements elicitation has evolved from adapting informal knowledge-acquisition techniques to developing structured, model-driven approaches such as goal-based, scenario-based, and viewpoint-oriented methods. More recently, attention has shifted toward providing tool support for these approaches and adapting elicitation practices to emerging paradigms such as agile development, distributed collaboration, web systems, and agent-oriented architectures. The overall trend reflects a move toward formalization, contextual adaptability, and integration of elicitation within broader software engineering frameworks.
+
+\subsection{Trends in Practice}
+
+In practice, requirements engineering is increasingly recognized as critical to project success, particularly in mature organizations. While traditional techniques such as interviews and group meetings remain dominant, structured approaches like Use Cases and UML modeling have gained widespread acceptance. Agile methodologies have further transformed practice by treating elicitation as an iterative, continuous activity supported by lightweight artifacts such as user stories and evolving backlogs. However, adoption of advanced or research-driven techniques remains uneven across organizations.
+
+\subsection{Challenges in Research}
+
+A key challenge in research is bridging the gap between theory and industrial practice. Many proposed elicitation techniques are complex and lack strong empirical validation, limiting adoption. The absence of standardized metrics for evaluating elicitation effectiveness further complicates comparative assessment. Researchers must focus on simplifying methodologies, providing stronger empirical evidence, and developing practical guidelines and educational frameworks that reduce reliance on expert intuition.
+
+\subsection{Challenges in Practice}
+
+In industry, elicitation is often constrained by limited time, resources, and stakeholder engagement. Organizations may underestimate its importance, leading to rushed processes and recurring quality issues. Stakeholder conflicts, organizational resistance to change, and variability in analyst expertise further complicate implementation. Strengthening analyst training, improving collaboration between research and practice, and fostering greater organizational commitment to structured elicitation remain persistent practical challenges.
