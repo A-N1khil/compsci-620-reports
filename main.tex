@@ -10,7 +10,7 @@
 
 \input{shared/preamble.tex}
 \usepackage[backend=biber,style=numeric,natbib=true,sorting=none]{biblatex}
-\input{bibsetup.tex}
+
 
 \newcommand{\reqchap}[1]{\chapter{\texorpdfstring{[{\color{red} Required}] #1}{#1}}}
 \newcommand{\skimchap}[1]{\chapter{\texorpdfstring{[{\color{blue} Skim}] #1}{#1}}}
@@ -55,22 +55,32 @@
 \reqchap{Using Logs Data to Identify When Sofware Engineers Experience Flow or Focused Work}
 \input{content/2_19_req_flow.tex}
 
-\reqchap{Creativity, Generative AI, and Software Development: A Research Agenda}
-\input{content/2_25_req_creativity.tex}
-\printbibliography[heading=subbibliography,title={References}]
+\begin{refsection}[report/2_25_req_creativity/refs.bib]
+    \reqchap{Creativity, Generative AI, and Software Development: A Research Agenda}
+    \input{content/2_25_req_creativity.tex}
+    \printbibliography[heading=subbibliography,title={References}]
+\end{refsection}
 
-\reqchap{Beliefs, Practices, and Personalities of Software Engineers: A Survey in a Large Software Company}
-\import{content/2_25_req_personalities}{2_25_req_personalities.tex}
-\printbibliography[heading=subbibliography,title={References}]
+\begin{refsection}[report/2_25_req_personalities/refs.bib]
+    \reqchap{Beliefs, Practices, and Personalities of Software Engineers: A Survey in a Large Software Company}
+    \import{content/2_25_req_personalities}{2_25_req_personalities.tex}
+    \printbibliography[heading=subbibliography,title={References}]
+\end{refsection}
+
 
 \part{Reading Notes - March}
 
-\reqchap{Requirements Elicitation: A Survey of Techniques, Approaches and Tools}
-\import{content/3_2_elicitation}{3_2_elicitation.tex}
-\printbibliography[heading=subbibliography,title={References}]
+\begin{refsection}[report/3_2_req_elicitation/refs.bib]
+    \reqchap{Requirements Elicitation: A Survey of Techniques, Approaches and Tools}
+    \import{content/3_2_elicitation}{3_2_elicitation.tex}
+    \printbibliography[heading=subbibliography,title={References}]
+\end{refsection}
 
-\reqchap{Advantages and Disadvantages of a Monolithic Repository}
-\import{content/3_4_monolithic}{3_4_req_monolithic.tex}
-\printbibliography[heading=subbibliography,title={References}]
+\begin{refsection}[report/3_4_req_monolithic/refs.bib]
+    \reqchap{Advantages and Disadvantages of a Monolithic Repository}
+    \import{content/3_4_monolithic}{3_4_req_monolithic.tex}
+    \printbibliography[heading=subbibliography,title={References}]
+\end{refsection}
+
 
 \end{document}               % End of document.
