@@ -16,3 +16,89 @@ In addition to linguistic factors, prior work has examined structural and readab
 
 More recently, functional Near Infrared Spectroscopy (fNIRS) has emerged as a practical alternative for measuring cognitive load, offering a non-invasive and portable way to capture brain activity during real-world programming tasks. Unlike traditional methods, fNIRS enables fine-grained analysis of cognitive effort while maintaining ecological validity, making it suitable for studying how specific code features—such as lexicon quality and readability—affect developers’ mental workload.
 
+\subsubsection{Linguistic Antipatterns}
+The paper builds upon prior work on linguistic antipatterns (LAs), which capture recurring deficiencies in the way identifiers, comments, and method names convey meaning in source code. These antipatterns arise when there is a mismatch between the natural language used in code and the actual behavior or intent of the program. Examples include misleading method names, inconsistent terminology, or contradictions between comments and implementation. Such issues can obscure program intent and force developers to spend additional effort reconciling semantic inconsistencies. Prior research has demonstrated that developers rely heavily on identifiers and comments as primary cues for understanding code, making the quality of these linguistic elements crucial for comprehension \cite{Arnaoudova2013}.
+
+Linguistic antipatterns are particularly problematic because they violate developers’ expectations about naming conventions and semantic consistency. When identifiers fail to accurately reflect functionality, developers must rely more on low-level code analysis rather than high-level reasoning, increasing cognitive effort. Studies on naming quality and identifier consistency further support the idea that well-chosen names improve comprehension speed and accuracy, while poor naming introduces ambiguity and misunderstandings \cite{Deissenboeck2006}. This body of work establishes the importance of lexicon quality as a key factor influencing program comprehension, motivating its deeper investigation in relation to cognitive load.
+
+\subsubsection{Cognitive Load and Program Comprehension}
+
+The second foundation of the paper lies in understanding cognitive load during program comprehension. Cognitive load refers to the mental effort required to process information, and in the context of software development, it reflects how difficult it is for a developer to understand and reason about code. Prior research in software engineering has explored the relationship between code complexity, readability, and comprehension, showing that factors such as structural complexity, nesting, and formatting significantly impact how easily developers can interpret code \cite{BuseWeimer2010}. However, these studies often rely on indirect measures such as performance or subjective assessments, leaving a gap in directly quantifying cognitive effort.
+
+To address this, recent work has incorporated physiological measurement techniques to study developers' mental processes. Approaches such as functional magnetic resonance imaging (fMRI) and eye tracking have been used to analyze how developers read and understand code, revealing insights into attention patterns and brain activity during comprehension tasks \cite{Siegmund2014,Fritz2014}. More recently, functional Near Infrared Spectroscopy (fNIRS) has emerged as a practical alternative for measuring cognitive load in realistic settings, offering a balance between accuracy and usability. These advances provide the methodological foundation for studying how specific factors—such as poor lexicon and readability—affect developers' cognitive effort, enabling a more precise and empirical understanding of program comprehension.
+
+\section{Methodology}
+\begin{enumerate}[leftmargin=*, itemsep=0.3em, label=\textbf{RQ \arabic*.}]
+    \item How do linguistic antipatterns affect developers' cognitive load during code comprehension tasks?
+    \item How does source code readability influence developers' cognitive load?
+    \item What is the combined effect of poor lexicon and low readability on cognitive load?
+    \item How do linguistic antipatterns and readability impact developers' task performance (e.g., comprehension and bug localization)?
+\end{enumerate}
+
+\subsection{Study Design}
+The study adopts a controlled experimental design to evaluate how linguistic antipatterns and readability influence cognitive load. Participants are asked to perform program comprehension and bug localization tasks on code snippets that are systematically manipulated to include or exclude linguistic antipatterns and readability issues. By controlling these variables, the study isolates their individual and combined effects on developer cognition.
+
+The experiment follows a within-subject design, where each participant interacts with multiple code samples under different conditions. This allows for direct comparison of cognitive load across varying levels of lexicon quality and readability while minimizing variability due to individual differences.
+
+\subsection{Participants}
+The study involves participants with programming experience, typically including graduate students or developers with a background in software engineering. Participants are selected to ensure they possess sufficient familiarity with programming concepts required for comprehension tasks.
+
+Before the experiment, participants are often screened or surveyed to assess their experience level, ensuring a relatively consistent baseline of programming proficiency. This helps reduce confounding factors related to expertise differences.
+
+\subsection{Experimental Tasks}
+Participants are assigned tasks that involve understanding code and identifying bugs. These tasks are designed to reflect realistic software engineering activities, particularly those requiring careful reasoning about program behavior.
+
+The code snippets used in the tasks are modified to include linguistic antipatterns and varying levels of readability. This enables the study to evaluate how these factors influence both comprehension effort and task performance under controlled conditions.
+
+\subsection{Independent Variables}
+The primary independent variables in the study are the presence of linguistic antipatterns and the level of code readability. Linguistic antipatterns are introduced into code snippets to simulate poor naming and documentation practices. Readability is manipulated through structural characteristics such as formatting, complexity, and organization.
+
+These variables are systematically combined to create different experimental conditions, allowing the study to analyze both individual and interaction effects on cognitive load.
+
+\subsection{Dependent Variables}
+The main dependent variable is cognitive load, which is measured using physiological signals obtained through fNIRS. This provides an objective measure of mental effort during task execution.
+
+In addition to cognitive load, task performance metrics such as accuracy and completion time are recorded. These measures help assess how increased cognitive load translates into practical impacts on developer effectiveness.
+
+\subsection{Data Collection}
+Data is collected using a combination of physiological measurements and behavioral observations. fNIRS is used to capture brain activity associated with cognitive effort while participants perform tasks. This enables fine-grained tracking of mental workload in real time.
+
+Alongside physiological data, the study records task outcomes such as correctness and time taken. This dual approach allows for a comprehensive analysis of both cognitive and performance-related effects.
+
+\subsection{Data Analysis}
+The collected data is analyzed to identify statistically significant differences across experimental conditions. Comparisons are made between code with and without linguistic antipatterns, as well as across different levels of readability.
+
+The analysis focuses on understanding how these factors influence cognitive load and performance, both independently and in combination. This enables the study to draw conclusions about the role of lexicon quality and readability in program comprehension.
+
+\section{Key Findings}
+
+\paragraph{RQ1: Effect of Linguistic Antipatterns on Cognitive Load}
+The results show that the presence of linguistic antipatterns significantly increases the cognitive load experienced by developers during program comprehension tasks. Participants exposed to code containing misleading or inconsistent identifiers exhibited higher mental effort, as measured through physiological signals. This indicates that poor naming forces developers to invest additional cognitive resources to interpret program intent. The study highlights that \textbf{linguistic inconsistencies disrupt semantic understanding}, leading to increased mental workload.
+
+Furthermore, developers working with code containing linguistic antipatterns demonstrated reduced efficiency in reasoning about the code. Even when the structural complexity remained unchanged, the degraded lexicon quality alone contributed to higher cognitive strain. This suggests that \textbf{identifier quality independently impacts comprehension}, separate from structural code factors.
+
+\paragraph{RQ2: Effect of Readability on Cognitive Load}
+The findings indicate that reduced code readability also leads to a measurable increase in cognitive load. Code with poor formatting, higher complexity, or less clear structure required more effort for participants to process and understand. This reinforces the role of readability as a critical factor in supporting efficient program comprehension. The study emphasizes that \textbf{structural clarity directly reduces mental effort}, enabling developers to navigate and interpret code more effectively.
+
+In addition, participants working with less readable code took longer to complete tasks and showed signs of increased cognitive strain. The lack of clear organization and formatting made it harder to follow control flow and logic. This demonstrates that \textbf{readability affects both cognitive load and task efficiency}, highlighting its importance in software quality.
+
+
+
+\paragraph{RQ3: Combined Effect of Lexicon and Readability}
+When linguistic antipatterns and poor readability were combined, the study observed the highest levels of cognitive load among participants. The interaction of semantic confusion (from poor naming) and structural complexity (from low readability) created compounding difficulties for developers. The results show that \textbf{the combined effect is greater than individual factors}, indicating a cumulative burden on cognitive processing.
+
+Participants in these conditions not only experienced higher mental effort but also struggled more with understanding program behavior. The simultaneous presence of multiple issues reduced their ability to form accurate mental models of the code. This suggests that \textbf{lexicon and readability jointly influence comprehension}, and improving only one may not be sufficient to reduce cognitive load effectively.
+
+
+\paragraph{RQ4: Impact on Task Performance}
+The study further demonstrates that increased cognitive load due to linguistic antipatterns and poor readability negatively affects task performance. Participants working with degraded code were more likely to make errors in comprehension and bug localization tasks. This highlights that cognitive strain translates directly into practical inefficiencies. The results indicate that \textbf{higher cognitive load leads to lower accuracy}, affecting developers' ability to correctly interpret code.
+
+Additionally, task completion times were longer in conditions with poor lexicon and readability. Developers required more time to understand and reason about the code, reflecting increased effort and reduced productivity. This shows that \textbf{cognitive load impacts both correctness and speed}, reinforcing the importance of writing clear and well-structured code.
+
+\section{Threats to Validity}
+
+One potential threat to internal validity arises from the controlled experimental setting and the use of artificially constructed code snippets. While such control allows isolation of linguistic antipatterns and readability effects, it may not fully capture the complexity of real-world software systems. Participants may behave differently when working with larger, more familiar codebases compared to short experimental tasks. Additionally, the manipulation of code to inject antipatterns could introduce unintended artifacts that influence cognitive load beyond the intended variables. These factors suggest that \textbf{experimental control may limit realism}, potentially affecting the interpretation of causal relationships \cite{Siegmund2014}.
+
+Threats to external validity stem from the participant pool and task design. The study primarily involves participants with academic or limited professional experience, which may not fully represent the diversity of expertise found in industry settings. Experienced developers might employ different strategies or be more resilient to poor naming and readability issues. Furthermore, the tasks focus on comprehension and bug localization, which, while common, do not cover the full spectrum of software engineering activities. This raises concerns that \textbf{results may not generalize across all developer populations and tasks} \cite{Fritz2014}.
+
+Construct validity is another concern, particularly in how cognitive load is measured and interpreted. Although fNIRS provides a promising physiological measure of mental effort, it captures brain activity indirectly and may be influenced by factors unrelated to the experimental variables, such as fatigue or individual differences in cognitive processing. Moreover, mapping physiological signals to cognitive load involves assumptions that may not fully reflect the nuanced mental processes involved in program comprehension. Therefore, \textbf{cognitive load measurements may not perfectly represent developers’ true mental effort}, potentially affecting the accuracy of conclusions \cite{Siegmund2014}.
