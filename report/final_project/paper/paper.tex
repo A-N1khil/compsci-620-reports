@@ -39,10 +39,14 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{definition}{Definition}[section]
-\usepackage{parskip}
 \usepackage[colorlinks=true, linkcolor=blue, linktoc=all, citecolor=black]{hyperref}
 \usepackage[normalem]{ulem}
 \usepackage{enumitem}
+\usepackage{import}
+
+% \setlength{\parindent}{1em}
+% \setlength{\parskip}{0pt}
+\usepackage{indentfirst}
 
 \newcommand{\cL}{{\cal L}}
 
@@ -122,7 +126,7 @@
 % \keywords
 % keyword1, keyword2
 
-\input{content.tex}
+\input{content_wrapper.tex}
 
 % The 'abbrvnat' bibliography style is recommended.
 
