@@ -1,0 +1,154 @@
+%-----------------------------------------------------------------------------
+%
+%               Template for sigplanconf LaTeX Class
+%
+% Name:         sigplanconf-template.tex
+%
+% Purpose:      A template for sigplanconf.cls, which is a LaTeX 2e class
+%               file for SIGPLAN conference proceedings.
+%
+% Guide:        Refer to "Author's Guide to the ACM SIGPLAN Class,"
+%               sigplanconf-guide.pdf
+%
+% Author:       Paul C. Anagnostopoulos
+%               Windfall Software
+%               978 371-2316
+%               paul@windfall.com
+%
+% Created:      15 February 2005
+%
+%-----------------------------------------------------------------------------
+
+
+\documentclass[preprint, numbers]{sigplanconf}
+
+% Uncomment when preprint off
+% \documentclass[numbers]{sigplanconf}
+
+% The following \documentclass options may be useful:
+
+% preprint       Remove this option only once the paper is in final form.
+%  9pt           Set paper in  9-point type (instead of default 10-point)
+% 11pt           Set paper in 11-point type (instead of default 10-point).
+% numbers        Produce numeric citations with natbib (instead of default author/year).
+% authorversion  Prepare an author version, with appropriate copyright-space text.
+
+\usepackage{amsmath}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{multicol}
+\setcounter{secnumdepth}{3}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\usepackage[colorlinks=true, linkcolor=blue, linktoc=all, citecolor=black]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{enumitem}
+\usepackage{import}
+
+% Better graphics handling
+\usepackage{graphicx}
+
+% Sub figures
+\usepackage{subcaption}
+
+% \setlength{\parindent}{1em}
+% \setlength{\parskip}{0pt}
+\usepackage{indentfirst}
+
+% Underlining that breaks across lines
+\usepackage[normalem]{ulem}
+
+% For checkmarks
+\usepackage{amssymb}
+
+\newcommand{\cL}{{\cal L}}
+
+\begin{document}
+
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+% For compatibility with auto-generated ACM eRights management
+% instructions, the following alternate commands are also supported.
+%\CopyrightYear{2016}
+%\conferenceinfo{CONF'yy,}{Month d--d, 20yy, City, ST, Country}
+%\isbn{978-1-nnnn-nnnn-n/yy/mm}\acmPrice{\$15.00}
+%\doi{http://dx.doi.org/10.1145/nnnnnnn.nnnnnnn}
+
+% Uncomment the publication rights used.
+%\setcopyright{acmcopyright}
+\setcopyright{acmlicensed}  % default
+%\setcopyright{rightsretained}
+
+\titlebanner{Project Check-In Preprint}        % These are ignored unless
+\preprintfooter{This paper provides a structured perspective on how generative AI reshapes developer problem-solving and suggests directions for future research.}   % 'preprint' option specified.
+
+\title{From Exploration to Acceleration: How Generative AI Reshapes Development Practices}
+% \subtitle{Subtitle Text, if any\titlenote{with optional subtitle note}}
+
+\authorinfo{Nikhil Anand}
+{University of Massachusetts, Amherst}
+{nikhilanand@umass.edu}
+\import{content/}{check-in.tex}
+\maketitle
+
+\begin{abstract}
+    Generative AI tools such as GitHub Copilot and ChatGPT are increasingly integrated into software development workflows, yet their influence on developers' problem solving strategies remains insufficiently understood. This paper presents a literature survey of ten recent studies examining how generative AI affects developer behavior during programming tasks. We adopt a hybrid analytical approach that first defines a taxonomy of AI-assisted interactions and then analyzes their impact across key stages of problem-solving, including problem understanding, solution generation, implementation, and debugging. Our synthesis shows that generative AI shifts developers from exploration-driven problem-solving toward solution selection and refinement, reducing cognitive effort while introducing risks of over-reliance and shallow reasoning. The impact varies across stages: conversational tools primarily support problem understanding, while suggestion-based and generative tools accelerate implementation and debugging. We further identify cross-cutting patterns in trust, prompting behavior, and learning. Finally, we highlight gaps in existing work, including limited longitudinal evidence and insufficient analysis of expertise-dependent effects. These findings provide a structured perspective on how generative AI reshapes developer problem-solving and suggest directions for future research.
+\end{abstract}
+
+% 2012 ACM Computing Classification System (CSS) concepts
+% Generate at 'http://dl.acm.org/ccs/ccs.cfm'.
+\begin{CCSXML}
+    <ccs2012>
+    <concept>
+    <concept_id>10011007.10011074.10011081</concept_id>
+    <concept_desc>Software and its engineering~Software development process management</concept_desc>
+    <concept_significance>500</concept_significance>
+    </concept>
+    <concept>
+    <concept_id>10010147.10010178.10010219.10010220</concept_id>
+    <concept_desc>Computing methodologies~Multi-agent systems</concept_desc>
+    <concept_significance>300</concept_significance>
+    </concept>
+    <concept>
+    <concept_id>10010147.10010178.10010179.10003352</concept_id>
+    <concept_desc>Computing methodologies~Information extraction</concept_desc>
+    <concept_significance>100</concept_significance>
+    </concept>
+    <concept>
+    <concept_id>10010147.10010178.10010179.10010182</concept_id>
+    <concept_desc>Computing methodologies~Natural language generation</concept_desc>
+    <concept_significance>100</concept_significance>
+    </concept>
+    </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software development process management}
+\ccsdesc[300]{Computing methodologies~Multi-agent systems}
+\ccsdesc[100]{Computing methodologies~Information extraction}
+\ccsdesc[100]{Computing methodologies~Natural language generation}
+% end generated code
+
+% Legacy 1998 ACM Computing Classification System categories are also
+% supported, but not recommended.
+%\category{CR-number}{subcategory}{third-level}[fourth-level]
+%\category{D.3.0}{Programming Languages}{General}
+%\category{F.3.2}{Logics and Meanings of Programs}{Semantics of Programming Languages}[Program analysis]
+
+% \keywords
+% keyword1, keyword2
+
+\input{content_wrapper.tex}
+
+% The 'abbrvnat' bibliography style is recommended.
+
+\bibliographystyle{abbrvnat}
+\bibliography{refs.bib}
+
+% Paste babel file here
+
+
+\end{document}
