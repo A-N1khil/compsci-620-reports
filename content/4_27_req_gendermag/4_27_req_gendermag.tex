@@ -1,0 +1,83 @@
+Software systems are often designed with the implicit assumption that they will serve all users equally; however, in practice, many systems unintentionally exclude or disadvantage certain groups of users. Prior research has highlighted numerous instances where software fails to accommodate diverse user needs, ranging from accessibility barriers to biases in algorithmic decision-making. These challenges underscore the importance of designing systems that are not only functional but also inclusive, ensuring equitable usability across different user populations. One promising approach to addressing such disparities is the GenderMag method, which enables developers to evaluate software through the lens of diverse cognitive styles associated with different user groups.
+
+Despite its theoretical grounding and promising results in controlled environments, the effectiveness of GenderMag in real-world, large-scale software systems remains underexplored. Existing evidence largely stems from small-scale laboratory studies, leaving a gap in understanding its practical impact on deployed systems used by thousands of users. This paper addresses this gap by presenting a multi-year case study of a code review feature, demonstrating how GenderMag can be applied in an industrial setting to improve usability and reduce gender disparities in feature discoverability.
+
+\section{Motivation}
+The motivation for this study arises from the broader challenge of ensuring that software systems are \textbf{inclusive and equitable for diverse users}, particularly in professional environments where usability directly impacts productivity. Prior observations suggest that software often unintentionally favors certain cognitive styles—especially those aligned with \textbf{exploratory and risk-tolerant behaviors}—while disadvantaging users who prefer \textbf{structured, process-oriented, or risk-averse approaches}. This imbalance can lead to disparities in how effectively different users interact with the same system, ultimately reinforcing inequities in participation and performance.
+
+A key issue motivating this work is the lack of \textbf{large-scale empirical evidence} demonstrating whether methods like GenderMag can successfully identify and mitigate such disparities in real-world settings. While prior studies have shown that GenderMag can uncover usability issues and even eliminate gender gaps in controlled experiments, these findings are often based on \textbf{small participant samples and artificial tasks}, raising concerns about their generalizability. There remains a critical need to evaluate whether these insights hold when applied to \textbf{complex, real-world systems with thousands of users and long-term usage patterns}.
+
+Another important motivation is the challenge of \textbf{feature discoverability}, which plays a crucial role in user experience but is often overlooked during system design. If a feature is difficult to find, it effectively does not exist for many users. The GenderMag framework predicts that such discoverability issues may disproportionately affect users with \textbf{lower self-efficacy, higher risk aversion, and less inclination to experiment}, characteristics that statistically align more frequently with women. This creates a compelling need to investigate whether these predicted disparities manifest in practice and whether they can be addressed through targeted design interventions.
+
+Finally, the study is motivated by the opportunity to move beyond qualitative assessments and provide \textbf{quantitative, data-driven validation} of inclusive design methods. By leveraging large-scale usage logs and longitudinal data, this work aims to establish whether applying GenderMag not only identifies usability issues but also leads to \textbf{measurable improvements in user behavior}, such as increased feature adoption and reduced gender gaps. This shift toward quantitative validation is essential for encouraging broader adoption of inclusive design practices in industry and for demonstrating their tangible impact on software usability and equity.
+
+\section{Methodology}
+\subsection{How We Applied GenderMag}
+The authors applied the GenderMag method to systematically identify usability issues in the Suggest Edit feature of the Critique code review tool. They utilized the \textbf{Tim and Abi personas}, which represent opposite ends of GenderMag’s cognitive style spectrum, ensuring coverage of diverse user behaviors and preferences. The evaluation was conducted over \textbf{two structured workshop sessions totaling approximately 3.5 hours}, where participants simulated real-world usage scenarios through these personas. To maintain contextual relevance, the personas were \textbf{adapted to represent Google software engineers}, while still preserving their cognitive characteristics.
+
+The sessions followed a structured format involving clearly defined roles: a \textbf{facilitator} ensured adherence to the GenderMag process, a \textbf{recorder} documented findings, a \textbf{driver} executed tasks on a shared interface, and multiple \textbf{evaluators} analyzed potential usability barriers from the perspectives of the personas. This setup enabled a collaborative and systematic walkthrough of the Suggest Edit workflow, allowing the team to \textbf{identify both inclusion-related and general usability issues}.
+
+Following the identification of issues, the team conducted a \textbf{two-day design workshop} to translate findings into actionable design improvements. During this phase, the identified usability barriers were used to guide the creation of \textbf{UI mockups and redesigned workflows}, some of which were subsequently implemented in the updated version of Critique. This iterative process ensured that insights from GenderMag were not only theoretical but also \textbf{operationalized into concrete design changes}.
+
+\subsection{Evaluation Methods}
+To evaluate the effectiveness of the GenderMag-based redesign, the study adopts a quantitative approach focused on measuring changes in feature discoverability. The methodology is designed to assess both the existence of gender disparities and the impact of the redesign in mitigating them.
+
+\subsubsection{Discoverability Metric: "Time" Until Suggest Edit}
+The study operationalizes discoverability as the \textbf{amount of interaction required before a user first uses the Suggest Edit feature}. Instead of measuring time in terms of wall-clock duration, the authors define it as the \textbf{number of review comments made prior to the first use of the feature}. This choice normalizes for differences in user activity levels, ensuring that more active users are not unfairly advantaged in the analysis.
+
+This metric is based on the assumption that increased interaction with the system provides more opportunities for feature discovery. Therefore, a \textbf{lower number of comments before first use indicates higher discoverability}. This formulation allows the study to quantitatively compare how quickly different groups of users discover the feature.
+
+However, the authors acknowledge several limitations. First, discovery may occur due to \textbf{external factors} such as peer recommendations or documentation, which are not captured in the metric. Second, the use of first-time feature usage as a proxy for discovery may not always be accurate, as users might discover but choose not to use the feature. Despite these limitations, the metric provides a \textbf{practical and scalable approximation of discoverability} suitable for large-scale analysis.
+
+\subsubsection{Modeling Strategy: Survival Analysis}
+To analyze discoverability, the study employs \textbf{survival analysis}, a statistical technique commonly used to model time-to-event data. In this context, the “event” corresponds to the \textbf{first use of the Suggest Edit feature}, and users who have not yet used the feature are treated as \textbf{right-censored observations}. This approach allows the inclusion of both users who discovered the feature and those who have not, avoiding bias in the analysis.
+
+The authors utilize two primary tools from survival analysis. First, \textbf{Kaplan-Meier plots} are used to visualize the probability of feature discovery over time across different user groups. Second, a \textbf{Cox proportional hazards regression model} is employed to quantify the effect of variables such as gender and system version on discoverability, while controlling for confounding factors.
+
+The regression model incorporates \textbf{job role and job level as control variables}, accounting for differences in prior experience and familiarity with similar tools. Additionally, an \textbf{interaction term between gender and system version} is included to evaluate how the redesign impacts different user groups. This modeling approach enables a \textbf{rigorous statistical comparison} of discoverability before and after the application of GenderMag.
+
+\subsection{Data}
+The dataset used in the study consists of \textbf{large-scale internal code review logs from Google}, spanning multiple years and capturing user interactions with both the original and redesigned versions of Critique. To ensure a fair comparison, the authors construct \textbf{two non-overlapping observation periods of equal length (34 months each)}, representing the pre- and post-GenderMag systems.
+
+Users included in each period are carefully selected to avoid contamination. Specifically, the study excludes individuals who interacted with both versions of the system, ensuring that each user contributes data to only one condition. This filtering strategy minimizes bias arising from prior experience with the feature and allows for a \textbf{clean comparison between system versions}.
+
+The final dataset includes \textbf{over 50,000 users}, with tens of thousands in each period. Gender information is obtained from internal records, though it is limited to binary categories (male and female). The authors acknowledge this limitation and note that it restricts the ability to analyze experiences of non-binary users.
+
+Despite careful design, the methodology is subject to limitations. External factors such as organizational changes or temporal effects may influence results, and the study is conducted within a single company and feature context. Nonetheless, the large-scale and longitudinal nature of the dataset provides \textbf{strong empirical grounding} for evaluating the real-world impact of GenderMag.
+
+\section{Key Findings}
+The study provides strong quantitative evidence on the effectiveness of GenderMag in improving feature discoverability. Before the redesign, only \textbf{23\% of users discovered the Suggest Edit feature}, with a median of \textbf{37 comments required before first use}. After applying GenderMag, this increased to \textbf{35\% of users discovering the feature}, with a dramatically reduced median of just \textbf{5 comments}. These results indicate a substantial improvement in discoverability, suggesting that the redesign made the feature \textbf{significantly easier and faster to find}.
+
+Importantly, these improvements are not marginal but represent a \textbf{step-change in usability}, demonstrating that even relatively small interface changes—when guided by a structured method like GenderMag—can lead to \textbf{large-scale behavioral shifts across thousands of users}.
+
+\subsection{Suggest Edit Discovery Curves}
+The Kaplan-Meier\footnote{Kaplan-Meier analysis is a statistical method used in survival analysis to estimate the probability that an event (e.g., feature discovery) occurs over time. It accounts for incomplete data (censored observations), allowing comparison of how different groups experience the event at different rates.
+} analysis reveals clear differences in how users discover the feature over time. Prior to GenderMag, \textbf{women consistently discovered the feature more slowly than men}, indicating a measurable gender disparity in usability. This confirms that the original design \textbf{disproportionately disadvantaged certain user groups}, aligning with GenderMag’s predictions about cognitive style mismatches.
+
+After the redesign, the discovery curves for men and women converge, showing that \textbf{the gender gap in discoverability was effectively eliminated}. Both groups exhibit significantly higher discovery rates, demonstrating that the redesign not only improved usability overall but also ensured \textbf{equitable access to the feature across genders}.
+
+Additionally, the most striking difference in the curves is between the pre- and post-GenderMag systems, rather than between genders. This indicates that the redesign led to a \textbf{universal improvement benefiting all users}, rather than favoring one group over another.
+
+\subsection{Testing Hypotheses}
+The statistical analysis using Cox proportional hazards regression\footnote{Cox proportional hazards regression is a statistical method used in survival analysis to model the effect of multiple variables on the time until an event occurs. It estimates how different factors influence the likelihood (hazard) of the event happening at any given time.
+} provides formal validation of the observed trends. The results show that, in the original system, \textbf{women were 18\% less likely than men to discover the feature at any given time}, confirming the presence of a significant gender gap.
+
+Following the GenderMag-based redesign, both men and women became approximately \textbf{2.4 times more likely to discover the feature}, indicating a substantial increase in discoverability. Crucially, the improvement for women was \textbf{on par with that of men}, demonstrating that the redesign achieved \textbf{gender parity without sacrificing overall usability gains}.
+
+These findings collectively validate both hypotheses:
+
+\begin{itemize}
+    \item The original system exhibited \textbf{gender-based disparities in feature discovery}.
+    \item The redesigned system \textbf{eliminated these disparities while significantly improving overall discoverability}.
+\end{itemize}
+
+\section{Implications}
+One key implication of this study is that \textbf{usability issues such as poor discoverability are often not obvious without structured analysis}. Even though the Suggest Edit feature suffered from low visibility and unclear affordances, these issues were only clearly identified after applying GenderMag. This suggests that relying solely on intuition or conventional design reviews may be insufficient, and that \textbf{systematic methods are essential for uncovering hidden usability barriers}.
+
+Another important implication is that \textbf{small, targeted design changes can lead to disproportionately large improvements in user behavior}. The redesign primarily involved improving feature visibility and clarifying interface elements, yet it resulted in a \textbf{2.4 times increase in discoverability and elimination of gender disparities}. This highlights that impactful improvements do not necessarily require large-scale redesigns, but rather \textbf{focused interventions guided by user-centered insights}.
+
+The findings also emphasize the importance of \textbf{designing for diverse cognitive styles rather than average users}. By explicitly considering differences in risk tolerance, learning styles, and self-efficacy, GenderMag enables developers to create interfaces that are \textbf{inclusive by design}. This shifts the perspective from fixing issues post hoc to proactively ensuring that systems support a wider range of users from the outset.
+
+A broader implication is the potential for combining \textbf{qualitative design methods with large-scale quantitative validation}. The study demonstrates that techniques like GenderMag can be complemented with log-based analysis to \textbf{identify, validate, and measure the impact of usability improvements at scale}. This integration provides stronger evidence for the effectiveness of inclusive design practices and can encourage their adoption in industry.
+
+Finally, the paper suggests a scalable future direction where \textbf{quantitative usage data can be used to identify problematic features across different user groups}, which can then be further analyzed using methods like GenderMag. This approach enables organizations to \textbf{systematically detect and address inequities in software usage}, extending beyond gender to other dimensions of diversity and inclusion.
