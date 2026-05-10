@@ -1,6 +1,4 @@
 \subsection{Requirements Elicitation}
-Requirements Engineering (RE) is a critical phase of the Software Development Life Cycle (SDLC) that focuses on identifying, analyzing, and specifying stakeholder needs to ensure the developed system aligns with user and business goals. A key activity within RE is requirements elicitation, where information is gathered—often through interviews and discussions—and translated into structured requirements. Since requirements are typically expressed in natural language, the process is prone to ambiguity, inconsistency, and misinterpretation, making quality attributes such as correctness and understandability essential. Traditional RE heavily depends on human expertise and communication skills, but challenges such as variability in analyst performance and the limitations of static learning methods, like transcript-based exercises, highlight the need for more effective and scalable approaches to improve both elicitation skills and requirement quality.
-
 \subsubsection{Generating Synthetic Requirements via Trustworthy AI Principles}
 \begin{figure}
     \centering
@@ -12,7 +10,7 @@ Requirements Engineering (RE) is a critical phase of the Software Development Li
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\columnwidth]{content/figures/re-ronaki-et-al-findings.png}
+    \includegraphics[width=0.7\columnwidth]{content/figures/re-ronaki-et-al-findings.png}
     \caption{Comparative analysis of requirements quality attributes for ChatGPT-generated and human-generated requirements by \citet{gpt_re_ronanki2023gptRE}}
     \label{fig:re:ronaki-findings}
 \end{figure}
@@ -21,16 +19,16 @@ The results (Figure \ref{fig:re:ronaki-findings}) show that ChatGPT-generated re
 \subsubsection{Structured Interview Scripts Generation via LLMs}
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\columnwidth]{content/figures/gorer-re-batch.png}
+    \includegraphics[width=0.7\columnwidth]{content/figures/gorer-re-batch.png}
     \caption{Batch generation approach for structured elicitation artifacts by \citet{re_interview_gorer2023generating}}
     \label{fig:re:gorer:batch}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\columnwidth]{content/figures/gorer-re-iterative.png}
+    \includegraphics[width=0.7\columnwidth]{content/figures/gorer-re-iterative.png}
     \caption{Iterative generation approach for structured elicitation artifacts by \citet{re_interview_gorer2023generating}}
     \label{fig:re:gorer:iterative}
 \end{figure}
-\citet{re_interview_gorer2023generating} propose a prompt engineering–based approach to generate structured elicitation artifacts using large language models. Their methodology combines few-shot and chain-of-thought prompting to guide models in producing business domain descriptions, feature sets, and multi-turn conversational artifacts. To support this, the authors introduce a graph-based representation of interactions, which is further decomposed into linear samples to improve model comprehension. Two generation strategies are explored: batch generation (Figure \ref{fig:re:gorer:batch}), where the entire artifact is produced at once, and iterative generation (Figure \ref{fig:re:gorer:iterative}), where content is constructed incrementally with finer control over each step and injected variations.
+\citet{re_interview_gorer2023generating} propose a prompt engineering–based approach to generate structured elicitation artifacts using large language models. Their methodology combines few-shot and chain-of-thought prompting to guide models in producing business domain descriptions, feature sets, and multi-turn conversational artifacts. Two generation strategies are explored: batch generation (Figure \ref{fig:re:gorer:batch}), where the entire artifact is produced at once, and iterative generation (Figure \ref{fig:re:gorer:iterative}), where content is constructed incrementally with finer control over each step and injected variations.
 
-The study finds that careful prompt design and task decomposition significantly improve the coherence and completeness of generated outputs. While models such as ChatGPT perform better in producing structured and consistent artifacts in batch settings, iterative approaches enable more precise control and explanation of specific interaction patterns. However, limitations remain in handling complex, non-linear conversational structures and certain nuanced scenarios. Overall, the results suggest that LLMs can effectively support the creation of structured elicitation material, but require guided prompting and human oversight to ensure accuracy and contextual relevance. The generated scripts samples are available in their repository \cite{binnur_gorer_2023_8049207}.
+The study finds that careful prompt design and task decomposition significantly improve the coherence and completeness of generated outputs. While models such as ChatGPT perform better in producing structured and consistent artifacts in batch settings, iterative approaches enable more precise control and explanation of specific interaction patterns. However, limitations remain in handling complex, non-linear conversational structures and certain nuanced scenarios. The generated scripts samples are available in their repository \cite{binnur_gorer_2023_8049207}.
