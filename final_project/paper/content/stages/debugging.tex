@@ -6,4 +6,17 @@ In a structured literature review done by \citet{zubair2025llmprogramrepair}, th
 \subsubsection{What specific programming errors or defects are targeted in program repair tasks using LLMs?}
 \citet{zubair2025llmprogramrepair} mentions that semantic and syntax errors are the most focused errors for program repair. There is a clear focus on software bugs when compared to security vulnerabilities. This indicates a stronger emphasis on software functionality repair rather than security-specific issues. The focus on single-hunk repair\footnote{Single-hunk bugs require changes in one contiguous code location \cite{zubair2025llmprogramrepair}} suggests that LLMs models currently are more focused on simpler code modifications. More investigation needs to be done on multi-hunk bugs\footnote{Multi-hunk bugs require fixes spanning multiple, non-contiguous locations, often in different files \cite{zubair2025llmprogramrepair}.}.
 
-\subsubsection{Debugging challenges of LLMs} Although Large Language Models (LLMs) have shown promising capabilities in automated debugging, there exist several important limitations in their effectiveness. A study by \citet{tian2024debugbench} found that LLMs perform well on syntax and reference errors but struggle significantly with logical and multi-error bugs that require deeper semantic reasoning and understanding of execution flow. Runtime feedback, such as traceback messages, can improve fixes for simple errors but may negatively affect logical debugging by misleading the model toward superficial corrections. Additionally, even advanced models like GPT-4 \cite{openai_gpt4} still perform below experienced human programmers in complex debugging scenarios, indicating that current LLMs lack robust reasoning and reliability for real-world software debugging tasks.
+\subsubsection{Debugging challenges of LLMs}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\columnwidth]{content/figures/debugging-across-bug-type.png}
+    \caption{LLM performance across different bug types, showing strong results for syntax and reference errors but significant challenges with logical bugs (\citet{tian2024debugbench}).}
+    \label{debug:fig:across-bug-type}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\columnwidth]{content/figures/debugging-across-errors.png}
+    \caption{LLM Debugging Performance compared to Human Debugging Performance (\citet{tian2024debugbench}).}
+    \label{debug:fig:human-gpt-compare}
+\end{figure}
+Although Large Language Models (LLMs) have shown promising capabilities in automated debugging, there exist several important limitations in their effectiveness. A study by \citet{tian2024debugbench} found that LLMs perform well on syntax and reference errors but struggle significantly with logical and multi-error bugs that require deeper semantic reasoning and understanding of execution flow (Figure \ref{debug:fig:across-bug-type}). Runtime feedback, such as traceback messages, can improve fixes for simple errors but may negatively affect logical debugging by misleading the model toward superficial corrections. Additionally, even advanced models like GPT-4 \cite{openai_gpt4} still perform below experienced human programmers (Figure \ref{debug:fig:human-gpt-compare}) in complex debugging scenarios, indicating that current LLMs lack robust reasoning and reliability for real-world software debugging tasks.
