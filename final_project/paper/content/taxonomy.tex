@@ -1,15 +1,14 @@
 \section{AI-Assisted Programming}
-To systematically analyze how generative AI influences developer problem-solving, we first characterize the different modes through which developers interact with AI systems during programming tasks. Rather than categorizing tools based on underlying models or capabilities, we focus on interaction patterns that reflect how developers engage with AI assistance in practice. In particular, we distinguish between two primary modes of interaction: exploration and acceleration. Exploration-oriented interactions involve using AI to understand problems, generate ideas, and examine alternative solutions, often through iterative and conversational engagement. In contrast, acceleration-oriented interactions focus on efficiently completing tasks by leveraging AI-generated suggestions or code with minimal deliberation. This distinction provides a useful lens for analyzing how AI support shapes developer behavior across different stages of problem-solving.
+To systematically analyze how generative AI influences developer problem-solving, we first characterize the different modes through which developers interact with AI systems during programming tasks. Rather than categorizing tools based on underlying models or capabilities, we focus on interaction patterns that reflect how developers engage with AI assistance in practice.
 
 \paragraph{Generative AI as an Autocomplete Tool}
-When solving structured programming tasks such as those found in Advent of Code \cite{adventOfCode}, developers often decompose the problem into smaller subtasks, such as parsing input into appropriate data structures. Even when the solution approach is clear, generative AI tools can be used to accelerate implementation by assisting with code completion and reducing the effort of recalling syntax or API details. Developers may provide contextual comments to guide the tool, after which inline suggestions appear during pauses in typing. These suggestions, including end-of-line completions (Figure \ref{figure:taxonomy:autocomplete}), enable faster code writing while maintaining the developer's original intent.
+Generative AI tools can be used to accelerate implementation by assisting with code completion and reducing the effort of recalling syntax or API details. Developers may provide contextual comments to guide the tool, after which inline suggestions appear during pauses in typing. These suggestions, including end-of-line completions (Figure \ref{figure:taxonomy:autocomplete}), enable faster code writing while maintaining the developer's original intent.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\columnwidth]{content/figures/taxonomy-autocomplete.png}
     \caption{An example of an end-of-line suggestion from Copilot, which completes the current line of code based on the context provided by preceding code and comments.}
     \label{figure:taxonomy:autocomplete}
 \end{figure}
-In this case (Figure \ref{figure:taxonomy:autocomplete}), Copilot suggests the correct API function invocation to split the rule into its left- and right-hand sides. To come up with this suggestion, Copilot relies on the context, i.e. some amount of source file content preceding the cursor, which can include both code and natural language comments, as is the case in our example.
 
 \paragraph{Generative AI as an Exploration Tool} When developers encounter unfamiliar tasks, generative AI can be used as an exploration tool to understand both the problem and potential solution approaches.
 \begin{figure}
@@ -25,7 +24,6 @@ Developers may begin by expressing the task through natural language prompts (li
     \caption{An example of Generative AI being used as an exploration tool, where the developer provides a natural language prompt to generate multiple candidate solutions.}
     \label{figure:taxonomy:generation:2}
 \end{figure}
-This process allows developers to select suitable code snippets while also gaining an understanding of underlying abstractions and libraries. To ensure correctness, the generated code is typically executed and inspected, serving as a form of validation. Such interactions are iterative and deliberate, involving prompt refinement, comparison of alternatives, and verification, reflecting an exploratory mode of problem-solving.
 
 \section{Taxonomy of AI-Assisted Programming}
 \subsection{Suggestion-Based Interactions}
