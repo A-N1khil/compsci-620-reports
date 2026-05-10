@@ -1,7 +1,7 @@
 \subsection{Development}
 \subsubsection{Code Generation From Natural Language}
 \citet{stages_dev_agarwal2024copilot} evaluated how LLMs translate natural language intent into executable code within an IDE-centric workflow. Their methodology involved selecting real-world methods from GitHub repositories, providing the model with the function signature, docstring, and surrounding file context, and prompting it to generate the method body. The generated code is then reintegrated into the original project and evaluated using syntax correctness and test pass rate, where the entire test suite is executed to verify functional behavior. This ensures that evaluation reflects realistic development conditions, where generated code must interact correctly with existing components rather than operate in isolation.
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{@{}llcc@{}}
         \\
