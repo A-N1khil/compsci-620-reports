@@ -1,0 +1,34 @@
+\subsection{Requirements Elicitation}
+\subsubsection{Generating Synthetic Requirements via Trustworthy AI Principles}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\columnwidth]{content/figures/re-ronaki-et-al.png}
+    \caption{Two-stage process employed by \citet{gpt_re_ronanki2023gptRE}}
+    \label{fig:re:ronaki}
+\end{figure}
+\citet{gpt_re_ronanki2023gptRE} employ a two-stage methodology: first, using ChatGPT to generate synthetic requirements for Trustworthy AI systems, and second, conducting interview-based surveys. Six elicitation questions were designed and posed both to ChatGPT (with a context prompt) and to five RE4AI experts, resulting in 36 responses (6 AI-generated, 30 expert-generated). These responses were then evaluated by another set of five RE experts across seven quality attributes: abstraction, atomicity, consistency, correctness, unambiguity, understandability, and feasibility. The principles of Trustworthy AI are grounded in prior work such as \citet{gpt_re_kaur2020review}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\columnwidth]{content/figures/re-ronaki-et-al-findings.png}
+    \caption{Comparative analysis of requirements quality attributes for ChatGPT-generated and human-generated requirements by \citet{gpt_re_ronanki2023gptRE}}
+    \label{fig:re:ronaki-findings}
+\end{figure}
+The results (Figure \ref{fig:re:ronaki-findings}) show that ChatGPT-generated requirements perform strongly across most quality attributes and often outperform human-generated ones in terms of structure and clarity. However, limitations are observed in unambiguity and feasibility, with AI outputs sometimes being vague or impractical. Both AI and human responses occasionally miss critical aspects like safety and regulatory concerns, indicating the continued need for domain expertise. Overall, ChatGPT is effective as an assistive tool but requires human oversight for ensuring completeness and real-world applicability.
+
+\subsubsection{Structured Interview Scripts Generation via LLMs}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\columnwidth]{content/figures/gorer-re-batch.png}
+    \caption{Batch generation approach for structured elicitation artifacts by \citet{re_interview_gorer2023generating}}
+    \label{fig:re:gorer:batch}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\columnwidth]{content/figures/gorer-re-iterative.png}
+    \caption{Iterative generation approach for structured elicitation artifacts by \citet{re_interview_gorer2023generating}}
+    \label{fig:re:gorer:iterative}
+\end{figure}
+\citet{re_interview_gorer2023generating} propose a prompt engineering–based approach to generate structured elicitation artifacts using large language models. Their methodology combines few-shot and chain-of-thought prompting to guide models in producing business domain descriptions, feature sets, and multi-turn conversational artifacts. Two generation strategies are explored: batch generation (Figure \ref{fig:re:gorer:batch}), where the entire artifact is produced at once, and iterative generation (Figure \ref{fig:re:gorer:iterative}), where content is constructed incrementally with finer control over each step and injected variations.
+
+The study finds that careful prompt design and task decomposition significantly improve the coherence and completeness of generated outputs. While models such as ChatGPT perform better in producing structured and consistent artifacts in batch settings, iterative approaches enable more precise control and explanation of specific interaction patterns. However, limitations remain in handling complex, non-linear conversational structures and certain nuanced scenarios. The generated scripts samples are available in their repository \cite{binnur_gorer_2023_8049207}.

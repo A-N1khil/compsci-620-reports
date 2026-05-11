@@ -20,7 +20,7 @@
 %-----------------------------------------------------------------------------
 
 
-\documentclass[preprint, numbers]{sigplanconf}
+\documentclass[numbers]{sigplanconf}
 
 % Uncomment when preprint off
 % \documentclass[numbers]{sigplanconf}
@@ -39,9 +39,7 @@
 \usepackage{amssymb}
 \usepackage{multicol}
 \setcounter{secnumdepth}{3}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{definition}{Definition}[section]
+\usepackage{xurl}
 \usepackage[colorlinks=true, linkcolor=blue, linktoc=all, citecolor=black]{hyperref}
 \usepackage[normalem]{ulem}
 \usepackage{enumitem}
@@ -62,6 +60,12 @@
 
 % For checkmarks
 \usepackage{amssymb}
+
+% For tables
+\usepackage{booktabs}
+
+% For multi-row cells in tables
+\usepackage{multirow}
 
 \newcommand{\cL}{{\cal L}}
 
@@ -86,13 +90,12 @@
 \titlebanner{Project Check-In Preprint}        % These are ignored unless
 \preprintfooter{This paper provides a structured perspective on how generative AI reshapes developer problem-solving and suggests directions for future research.}   % 'preprint' option specified.
 
-\title{From Exploration to Acceleration: How Generative AI Reshapes Development Practices}
+\title{Exploration \& Acceleration: How Generative AI Reshapes Development Practices}
 % \subtitle{Subtitle Text, if any\titlenote{with optional subtitle note}}
 
 \authorinfo{Nikhil Anand}
 {University of Massachusetts, Amherst}
 {nikhilanand@umass.edu}
-\import{content/}{check-in.tex}
 \maketitle
 
 \begin{abstract}
